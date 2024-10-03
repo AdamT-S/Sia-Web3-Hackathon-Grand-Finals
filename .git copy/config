@@ -1,0 +1,29 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/AdamT-S/Software-Engineering-Coursework.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "Develop"]
+	remote = origin
+	merge = refs/heads/Develop
+[branch "express_pug"]
+	remote = origin
+	merge = refs/heads/express_pug
+	vscode-merge-base = origin/Develop
+[branch "Unais"]
+	remote = origin
+	merge = refs/heads/Unais
+[branch "Matt"]
+	remote = origin
+	merge = refs/heads/Matt
+[branch "frontend_layout"]
+	remote = origin
+	merge = refs/heads/frontend_layout
+[branch "SQL-Branch"]
+	remote = origin
+	merge = refs/heads/SQL-Branch
