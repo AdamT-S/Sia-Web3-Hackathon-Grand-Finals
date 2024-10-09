@@ -1,0 +1,216 @@
+body {
+    margin: 0;
+    background-color: #cefebf;
+    font-family: sans-serif;
+}
+
+.phone-screen {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    
+}
+
+.top-bar {
+    text-align: center;
+    padding: 10px 0;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
+    top: 0;
+    right: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.top-bar .icon {
+    font-size: 2.5em;
+    padding: 10px;
+    border-radius: 100%;
+    color: #666666; /* Default icon color */
+}
+
+.top-bar .user-icon {
+    font-size: 2.5em;
+    padding: 10px;
+    color: #666666; /* Default icon color */
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    .user-icon {
+        font-size: 1.5em;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute; /* Change position to absolute */
+    top: calc(100% + 10px); /* Position it below the user icon */
+    right: 0; /* Position from the right */
+    background-color: #bbec83; /* Green background color */
+    min-width: 190px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    color: black; /* Black text color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #dcedc8; /* Light green hover color */
+}
+
+.show {
+    display: block;
+}
+
+.bottom-bar {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
+}
+
+.bottom-bar .icon {
+    font-size: 2.5em;
+    padding: 10px;
+    border-radius: 100%;
+    color: #666666; /* Default icon color */
+}
+
+.bottom-bar .icon.active {
+    color: white;
+    background-color: #f0f0f0; /* Active icon background color */
+    border: 1px solid #f0f0f0; /* Active icon border color */
+}
+
+.add-content .page-image {
+    max-width: 200px; /* Adjust image size */
+    height: auto;
+}
+
+/* Add a new class for the balance display */
+.balance-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px; /* Adjust margin-top as needed */
+}
+
+.home-content .qr-code {
+    max-width: 200px; /* Adjust image size */
+    height: auto;
+    margin-top: 20px; /* Adjust margin-top as needed */
+    display: block; /* Ensure it's a block-level element for centering */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.home-content .wallet-image {
+    max-width: 200px; /* Adjust image size */
+    height: auto;
+    margin-top: 20px; /* Adjust margin-top as needed */
+    display: block; /* Ensure it's a block-level element for centering */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+/* Center the QR code */
+.home-content .qr-code {
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+/* Center the image */
+.home-content .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+.wallet-content .qr-code {
+    max-width: 150px; /* Adjust image size */
+    height: auto;
+    margin-top: 20px; /* Adjust margin-top as needed */
+    display: block; /* Ensure it's a block-level element for centering */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.wallet-content .wallet-image {
+    max-width: 150px; /* Adjust image size */
+    height: auto;
+    margin-top: 100px; /* Adjust margin-top as needed */
+    display: block; /* Ensure it's a block-level element for centering */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.wallet-content .redeem {
+    max-width: 150px; /* Adjust image size */
+    height: auto;
+    margin-left: 215px; /* Center horizontally */
+    margin-top: 20px;
+}
+
+.wallet-content .myvouchers {
+    max-width: 170px; /* Adjust image size */
+    height: auto;
+    margin-left: 385px; /* Center horizontally */
+    margin-top: -49px;
+    margin-bottom: 100px;
+}
+
+/* Center the image */
+.wallet-content .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
+
+/* Center the balance text */
+.balance-text {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    text-align: center;
+}
+
+.description {
+    text-align: center; /* Center the text */
+    margin-top: 5px; /* Add some space between the image and the text */
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container .voucher5description {
+    margin-top: 100px;
+}
+
+.image-container .voucher5, .image-container .voucher15, .image-container .voucher25 {
+    max-width: 200px;
+    height: auto;
+}
+
