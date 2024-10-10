@@ -12,19 +12,19 @@
 
     <div class="top-bar">
         <div class="dropdown">
-            <ion-icon name="Settings" class="icon" onclick="changePage('home')"></ion-icon>
             <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon>
+            <ion-icon name="wallet-outline" class="icon" onclick="changePage('wallet')"></ion-icon>
             <ion-icon name="person-circle-outline" class="user-icon" onclick="toggleDropdown()"></ion-icon>
             <div class="dropdown-content" id="dropdownContent">
-                <a href="#">Account Settings</a>
-                <a href="#">Log Out</a>
+                <a href="#" onclick="changePage('settings')">Account Settings</a>
+                <a href="Login.html">Log Out</a>
             </div>
         </div>
     </div>
     <div class="bottom-bar">
-        <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon>
+        <!-- <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon> -->
         <!-- <ion-icon name="add-circle-outline" class="icon" onclick="changePage('add')"></ion-icon> -->
-        <ion-icon name="wallet-outline" class="icon" onclick="changePage('wallet')"></ion-icon>
+        <!-- <ion-icon name="wallet-outline" class="icon" onclick="changePage('wallet')"></ion-icon> -->
     </div>  
 
     <div id="content">
@@ -32,6 +32,17 @@
     </div>
 
     <script>
+
+        let webLanguage = "English";
+
+        function getLanguage() {
+            return webLanguage;
+        }
+
+        function setLanguage(newLanguage) {
+            webLanguage = newLanguage;
+        }
+
         function toggleDropdown() {
             var dropdownContent = document.getElementById("dropdownContent");
             dropdownContent.classList.toggle("show");
@@ -50,7 +61,7 @@
             }
         }
 
-        function changePage(pageName) {
+        function changePage(pageName, currentLanguage) {
             // Remove active class from all icons
             const buttons = document.querySelectorAll('.icon');
             buttons.forEach(button => button.classList.remove("active"));
@@ -59,10 +70,10 @@
             event.target.classList.add("active");
 
             // Load content based on the pageName
-            fetchPage(pageName);
+            fetchPage(pageName,getLanguage());
         }
 
-        function fetchPage(pageName) {
+        function fetchPage(pageName,currentLanguage) {
             // Simulate fetching content based on pageName
             let content = '';
             if (pageName === 'home') {
@@ -84,6 +95,7 @@
                             <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
                             <p class="voucher25description">Gold</p>
                             <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
+                            <img src="Back Button.png" alt="BackButton" class="backbutton" onclick="changePage('wallet')">
                         </div>
                     </div>`;
             } else if (pageName === 'wallet') {
@@ -91,17 +103,36 @@
                     <div class="wallet-content">
                         <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
                         <div class="balance-display">
-                            <div class="balance-text">Balance: 100</div>
+                            <div class="balance-text">Total Balance: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <img src="Redeem Button.png" alt="REDEEM" class="redeem" onclick="changePage('add')"">
                         <img src="My Vouchers Button.png" alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">
+                    </div>`;
+            } else if (pageName == 'settings' && currentLanguage == 'English') {
+                content = `
+                    <div class="settings-content">
+                        <p class="Title">Settings</p>
+                        <p class="Language">Language: </p>
+                        <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
+                            <option value="English">English</option>
+                            <option value="French">French</option>
+                        </select>
+                    </div>`;
+            } else if (pageName == 'settings' && currentLanguage == 'French') {
+                content = `
+                    <div class="settings-content">
+                        <p class="Title">Paramètres</p>
+                        <p class="Language">Langue: </p>
+                        <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
+                            <option value="French">French</option>
+                            <option value="English">English</option>
+                        </select>
                     </div>`;
             }
             // Display the content in the content div
             document.getElementById('content').innerHTML = content;
         }
     </script>
-
 </body>
 </html>
