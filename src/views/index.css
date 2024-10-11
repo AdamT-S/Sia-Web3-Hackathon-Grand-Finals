@@ -124,23 +124,30 @@ body {
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
-    height: 500px;
+    height: 560px;
     margin-top: 85px;
     align-items: center;
 }
 
-.home-content .PopularPlaces {
+.home-content .popularplaces {
     background-color: white;
-    width: 100px;
-    height: 100px;
+    margin-left: 25px;
+    width: 400px;
+    height: 120px;
 }
 
-.home-content .RecentPlaces {
+.home-content .recentplaces {
     background-color: white;
+    margin-left: 25px;
+    width: 400px;
+    height: 120px;
 }
 
-.home-content .NearPlaces {
+.home-content .nearplaces {
     background-color: white;
+    margin-left: 25px;
+    width: 400px;
+    height: 120px;
 }
 
 .home-content .qr-code {
