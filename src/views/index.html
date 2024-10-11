@@ -79,13 +79,20 @@
             if (pageName === 'home') {
                 content = `
                     <div class="home-content">
-                        <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
-                        <div class="balance-display">
-                            <div class="balance-text">Balance: 100</div>
+                        <p class="populartext">Popular</p>
+                        <div class="PopularPlaces">
+
                         </div>
-                        <img src="github-qr-code.png" alt="QR Code" class="qr-code">
+                        <p class="recenttext">Recently Visited</p>
+                        <div class="RecentPlaces">
+                            
+                        </div>
+                        <p class="neartext">Near You</p>
+                        <div class="NearPlaces">
+                            
+                        </div>
                     </div>`;
-            } else if (pageName === 'add') {
+            } else if (pageName === 'add' && currentLanguage == 'English') {
                 content = `
                     <div class="add-content">
                         <div class="image-container">
@@ -94,6 +101,19 @@
                             <p class="voucher15description">Silver</p>
                             <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
                             <p class="voucher25description">Gold</p>
+                            <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
+                            <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
+                        </div>
+                    </div>`;
+            } else if (pageName === 'add' && currentLanguage == 'French') {
+                content = `
+                    <div class="add-content">
+                        <div class="image-container">
+                            <p class="voucher5description">Bronze</p>
+                            <img src="5 Point Voucher Rounded.png" alt="5 Enviropoints" class="voucher5">                       
+                            <p class="voucher15description">Argent</p>
+                            <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
+                            <p class="voucher25description">Doré</p>
                             <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
                             <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                         </div>
