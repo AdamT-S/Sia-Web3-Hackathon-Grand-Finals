@@ -8,12 +8,22 @@
 </head>
 <body>
     <div class="main">
-        <input type="checkbox" id="chk" aria-hidden="true">
+        <!-- Log in page label and class-->
+        <div class="Login">
+            <form>
+                <label class ="Spacetext">Spacetext</label>
+                <label>Log in</label>
+                <input type="text" name="txt" placeholder="User name" required="">
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Password" required="">
+                <button>Log in</button>
+            </form>
+        </div>
 
         <!-- Sign up class and label-->
         <div class="signup">
             <form>
-                <label for="chk" aria-hidden="true">Sign up</label>
+                <label>Sign up</label>
                 <input type="text" name="txt" placeholder="User name" required="">
                 <input type="email" name="email" placeholder="Email" required="">
                 <input type="password" name="pswd" placeholder="Password" required="">
@@ -21,15 +31,8 @@
             </form>
         </div>
 
-        <!-- Log in page label and class-->
-        <div class="Login">
-            <form>
-                <label for="chk" aria-hidden="true">Log in</label>
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="pswd" placeholder="Password" required="">
-                <button>Log in</button>
-                <a href="#" class="forgot-password">Forgot Password?</a> <!-- Added class for styling -->
-            </form>
+        <div class="space">
+            
         </div>
     </div>
 </body>

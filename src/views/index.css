@@ -29,11 +29,14 @@ body {
     padding: 10px;
     border-radius: 100%;
     color: #666666; /* Default icon color */
+    cursor: pointer;
+
 }
 
 .top-bar .user-icon {
     font-size: 2.5em;
     padding: 10px;
+    border-radius: 100%;
     color: #666666; /* Default icon color */
     cursor: pointer;
 }
@@ -165,18 +168,11 @@ body {
 }
 
 .wallet-content .redeem {
-    max-width: 150px; /* Adjust image size */
-    height: auto;
-    margin-left: 215px; /* Center horizontally */
     margin-top: 20px;
 }
 
 .wallet-content .myvouchers {
-    max-width: 170px; /* Adjust image size */
-    height: auto;
-    margin-left: 385px; /* Center horizontally */
-    margin-top: -49px;
-    margin-bottom: 100px;
+    margin-top: 20px;
 }
 
 /* Center the image */
@@ -215,9 +211,7 @@ body {
 }
 
 .image-container .backbutton {
-    margin-top: 50px;
-    max-width: 150px;
-    height: auto;
+    margin-top: 20px;
 }
 
 .settings-content .Title {
@@ -243,3 +237,25 @@ body {
     align-items: center;
     position: absolute;
 } */
+
+button {
+    width: 150px;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: black;
+    background: white;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c7c7c7;
+}

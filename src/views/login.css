@@ -6,23 +6,25 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Jost' , sans-serif;
-    background: linear-gradient(to bottom, #c8ee76, #CCF0D1);
+    background: linear-gradient(to top, #afb1ff, #d8daf7);
+    background-attachment: fixed;
 }
 
 .main {
     width: 350px;
     height: 500px;
-    background: #B5E550;
+    /* background: #67a1f3; */
 }
 
-#chk {
-    display: none;
+.spacer {
+    height: 100px;
 }
 
 .signup {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 400px;
+    background: #a0c3f5;
 }
 
 label {
@@ -30,9 +32,8 @@ label {
     font-size: 1.3em;
     justify-content: center;
     display: flex;
-    margin: 60px;
+    margin: 0px;
     font-weight: bold;
-    cursor: pointer;
     transition: .5s ease-in-out;
 }
 
@@ -63,50 +64,24 @@ button {
     outline: none;
     border: none;
     border-radius: 5px;
-    transition: .2s ease-in-out;
+    transition: .1s ease-in-out;
     cursor: pointer;
 }
 
 button:hover {
-    background: #c9f075;
+    background: #c7c7c7;
 }
 
 .Login {
     height: 460px;
-    background: #d7f793;
-    border-radius: 60% / 10%;
-    transform: translateY(-180px);
-    transition: .8s ease-in-out;
+    background: #a0c3f5;
+}
+
+.Login .Spacetext {
+    visibility: hidden;
 }
 
 .Login label {
+    margin-top: 10px;
     color: black;
-    transform: scale(.6);
-}
-
-.Login .forgot-password {
-    color: black; /* Set font color to white */
-    text-decoration: underline; /* Add underline to mimic link */
-    font-size: 0.7em; /* Adjust font size */
-    display: block; /* Make it a block-level element */
-    text-align: center; /* Center align the text */
-    margin-top: 10px; /* Add some top margin for spacing */
-    transition: color 0.3s ease-in-out; /* Smooth transition for color change */
-}
-
-/* Add hover effect */
-.Login .forgot-password:hover {
-    color: #f0f0f0; /* Change font color on hover */
-}
-
-#chk:checked ~ .Login {
-    transform: translateY(-500px);
-}
-
-#chk:checked ~ .Login label {
-    transform: scale(1);
-}
-
-#chk:checked ~ .signup label {
-    transform: scale(.8);
 }

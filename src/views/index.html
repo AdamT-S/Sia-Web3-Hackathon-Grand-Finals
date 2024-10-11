@@ -95,10 +95,10 @@
                             <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
                             <p class="voucher25description">Gold</p>
                             <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
-                            <img src="Back Button.png" alt="BackButton" class="backbutton" onclick="changePage('wallet')">
+                            <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                         </div>
                     </div>`;
-            } else if (pageName === 'wallet') {
+            } else if (pageName === 'wallet' && currentLanguage == 'English') {
                 content = `
                     <div class="wallet-content">
                         <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
@@ -106,28 +106,43 @@
                             <div class="balance-text">Total Balance: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
-                        <img src="Redeem Button.png" alt="REDEEM" class="redeem" onclick="changePage('add')"">
-                        <img src="My Vouchers Button.png" alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">
+                        <button alt="REDEEM" class="redeem" onclick="changePage('add')">Redeem</button>
+                        <button alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">My Vouchers</button>
+                    </div>`;
+            } else if (pageName === 'wallet' && currentLanguage == 'French') {
+                content = `
+                    <div class="wallet-content">
+                        <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
+                        <div class="balance-display">
+                            <div class="balance-text">Solde total: 100</div>
+                        </div>
+                        <img src="github-qr-code.png" alt="QR Code" class="qr-code">
+                        <button alt="REDEEM" class="redeem" onclick="changePage('add')">Racheter</button>
+                        <button alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">Mes Bons</button>
                     </div>`;
             } else if (pageName == 'settings' && currentLanguage == 'English') {
                 content = `
                     <div class="settings-content">
                         <p class="Title">Settings</p>
                         <p class="Language">Language: </p>
-                        <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
-                            <option value="English">English</option>
-                            <option value="French">French</option>
-                        </select>
+                        <div align="center">
+                            <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
+                                <option value="English">English</option>
+                                <option value="French">French</option>
+                            </select>
+                        </div>
                     </div>`;
             } else if (pageName == 'settings' && currentLanguage == 'French') {
                 content = `
                     <div class="settings-content">
                         <p class="Title">Paramètres</p>
                         <p class="Language">Langue: </p>
-                        <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
-                            <option value="French">French</option>
-                            <option value="English">English</option>
-                        </select>
+                        <div align="center">
+                            <select class="Languages" onchange="setLanguage(this.value); changePage('settings', this.value)">
+                                <option value="French">French</option>
+                                <option value="English">English</option>
+                            </select>
+                        </div>
                     </div>`;
             }
             // Display the content in the content div
