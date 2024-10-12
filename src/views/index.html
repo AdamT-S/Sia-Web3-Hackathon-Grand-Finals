@@ -9,7 +9,6 @@
     
 </head>
 <body>
-
     <div class="top-bar">
         <div class="dropdown">
             <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon>
@@ -25,14 +24,13 @@
         <!-- <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon> -->
         <!-- <ion-icon name="add-circle-outline" class="icon" onclick="changePage('add')"></ion-icon> -->
         <!-- <ion-icon name="wallet-outline" class="icon" onclick="changePage('wallet')"></ion-icon> -->
-    </div>  
+    </div>
 
     <div id="content">
         <!-- Content for pages will be loaded here -->
     </div>
 
     <script>
-
         let webLanguage = "English";
 
         function getLanguage() {
@@ -47,6 +45,8 @@
             var dropdownContent = document.getElementById("dropdownContent");
             dropdownContent.classList.toggle("show");
         }
+
+        window.onload = fetchPage("home","English");
 
         window.onclick = function(event) {
             if (!event.target.matches('.user-icon')) {
@@ -76,9 +76,11 @@
         function fetchPage(pageName,currentLanguage) {
             // Simulate fetching content based on pageName
             let content = '';
-            if (pageName === 'home') {
+            if (pageName === 'home' && currentLanguage == "English") {
                 content = `
                     <div class="home-content">
+                        <p class ="Spacetext">Spacetext</p>
+
                         <p class="populartext">Popular</p>
                         <div class="popularplaces">
 
@@ -88,6 +90,23 @@
                             
                         </div>
                         <p class="neartext">Near You</p>
+                        <div class="nearplaces">
+                            
+                        </div>
+                    </div>`;
+            } else if (pageName === 'home' && currentLanguage == "French") {
+                content = `
+                    <div class="home-content">
+                        <p class ="Spacetext">Spacetext</p>
+                        <p class="populartext">Populaire</p>
+                        <div class="popularplaces">
+
+                        </div>
+                        <p class="recenttext">Récemment visité</p>
+                        <div class="recentplaces">
+                            
+                        </div>
+                        <p class="neartext">Près de chez vous</p>
                         <div class="nearplaces">
                             
                         </div>
@@ -123,7 +142,7 @@
                     <div class="wallet-content">
                         <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
                         <div class="balance-display">
-                            <div class="balance-text">Total Balance: 100</div>
+                            <div class="balance-text">Your Balance: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <button alt="REDEEM" class="redeem" onclick="changePage('add')">Redeem</button>
@@ -134,7 +153,7 @@
                     <div class="wallet-content">
                         <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
                         <div class="balance-display">
-                            <div class="balance-text">Solde total: 100</div>
+                            <div class="balance-text">Votre solde: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <button alt="REDEEM" class="redeem" onclick="changePage('add')">Racheter</button>

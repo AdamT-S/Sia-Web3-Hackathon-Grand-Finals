@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #cefebf;
+    background-color: #e2fadc;
     font-family: sans-serif;
     align-items: center;
 }
@@ -129,6 +129,24 @@ body {
     align-items: center;
 }
 
+.home-content .Spacetext {
+    margin-top: 100px;
+    margin-bottom: -5px;
+    visibility: hidden;
+}
+
+.home-content .populartext {
+    margin-left: 25px;
+}
+
+.home-content .recenttext {
+    margin-left: 25px;
+}
+
+.home-content .neartext {
+    margin-left: 25px;
+}
+
 .home-content .popularplaces {
     background-color: white;
     margin-left: 25px;
@@ -148,32 +166,6 @@ body {
     margin-left: 25px;
     width: 400px;
     height: 120px;
-}
-
-.home-content .qr-code {
-    max-width: 150px; /* Adjust image size */
-    height: auto;
-    margin-top: 20px; /* Adjust margin-top as needed */
-    display: block; /* Ensure it's a block-level element for centering */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-
-.home-content .wallet-image {
-    max-width: 150px; /* Adjust image size */
-    height: auto;
-    margin-top: 100px; /* Adjust margin-top as needed */
-    display: block; /* Ensure it's a block-level element for centering */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-
-.home-content .redeem {
-    margin-top: 20px;
-}
-
-.home-content .myvouchers {
-    margin-top: 20px;
 }
 
 /* Center the image */
