@@ -1,6 +1,8 @@
 body {
     margin: 0;
-    background-color: #e2fadc;
+    /* background-color: #e2fadc; */
+    background: linear-gradient(to top, #afb1ff, #d8daf7);
+    background-attachment: fixed;
     font-family: sans-serif;
     align-items: center;
 }
@@ -58,7 +60,7 @@ body {
     position: absolute; /* Change position to absolute */
     top: calc(100% + 10px); /* Position it below the user icon */
     right: 0; /* Position from the right */
-    background-color: #bbec83; /* Green background color */
+    background-color: #8cb0fd; /* Green background color */
     min-width: 190px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -120,7 +122,7 @@ body {
 }
 
 .home-content {
-    background-color: #D9D9D9;
+    background-color: #8cb0fd;
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
@@ -255,6 +257,20 @@ body {
 
 .settings-content .Languages {
     font-size: 2em;
+    width: 150px;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: black;
+    background: white;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+
 }
 
 /* Center the image
