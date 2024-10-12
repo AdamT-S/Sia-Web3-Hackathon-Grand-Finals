@@ -2,9 +2,7 @@ import mysql from 'mysql2/promise';
 import City from '../models/city.mjs';
 import Continent from '../models/continent.mjs';
 import Country from '../models/country.mjs';
-import District from '../models/district.mjs';
 import Language from '../models/language.mjs';
-import Region from '../models/region.mjs';
 
 export default class DatabaseService {
 	conn;
@@ -19,7 +17,7 @@ export default class DatabaseService {
 			host: process.env.DATABASE_HOST || 'localhost',
 			user: 'user',
 			password: 'password',
-			database: 'world',
+			database: 'envirewards',
 		});
 
 		console.log("connect() executed successfully");
