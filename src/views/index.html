@@ -21,9 +21,7 @@
         </div>
     </div>
     <div class="bottom-bar">
-        <!-- <ion-icon name="home-outline" class="icon" onclick="changePage('home')"></ion-icon> -->
         <!-- <ion-icon name="add-circle-outline" class="icon" onclick="changePage('add')"></ion-icon> -->
-        <!-- <ion-icon name="wallet-outline" class="icon" onclick="changePage('wallet')"></ion-icon> -->
     </div>
 
     <div id="content">
@@ -73,6 +71,57 @@
             fetchPage(pageName,getLanguage());
         }
 
+    const submitAction = (type, emailInput, passwordInput) => {
+	// If empty form submitted
+	if (!emailInput || !passwordInput) {
+		alert('Please fill up the registration form.');
+	} else if (!emailRegex.test(emailInput.value)) {
+		// Handle invalid email format
+		alert('Please enter a valid email address with "@" and domain.');
+		return;
+	} else {
+		// If successes
+		if (type == 'login') {
+			// Call backend to validate user credentials
+			fetch(`/loginCredentialsCheck?name=${emailInput.value}&password=${passwordInput.value}`)
+				.then((response) => response.json())
+				.then((data) => {
+					// Return JSON with 'authorized' boolean
+					if (data.authorized) {
+						login(emailInput, passwordInput);
+					} else {
+						logout();
+					}
+				});
+		} else if (type == 'register') {
+			// Construct the request body
+			let requestBody = {
+				name: emailInput.value,
+				password: passwordInput.value,
+			};
+
+			fetch(`/register`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(requestBody),
+			})
+				.then((response) => response.json())
+				.then((confirmation) => {
+					if (confirmation.status == 1) {
+						emailInput.value = '';
+						passwordInput.value = '';
+						alert(confirmation.msg);
+						window.location.href = window.location.href;
+					} else {
+						alert(confirmation.msg);
+					}
+				});
+		}
+	}
+};
+
         function fetchPage(pageName,currentLanguage) {
             // Simulate fetching content based on pageName
             let content = '';
@@ -111,28 +160,54 @@
                             
                         </div>
                     </div>`;
-            } else if (pageName === 'add' && currentLanguage == 'English') {
+            } else if (pageName === 'redeem' && currentLanguage == 'English') {
                 content = `
-                    <div class="add-content">
+                    <div class="redeem-content">
                         <div class="image-container">
-                            <p class="voucher5description">Bronze</p>
+                            <p class="voucher5description">Bronze: 5 Points</p>
+                            <img src="5 Point Voucher Rounded.png" alt="5 Enviropoints" class="voucher5" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">                       
+                            <p class="voucher15description">Silver: 15 Points</p>
+                            <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
+                            <p class="voucher25description">Gold: 25 Points</p>
+                            <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
+                            <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
+                        </div>
+                    </div>`;
+            } else if (pageName === 'redeem' && currentLanguage == 'French') {
+                content = `
+                    <div class="redeem-content">
+                        <div class="image-container">
+                            <p class="voucher5description">Bronze: 5 Points</p>
+                            <img src="5 Point Voucher Rounded.png" alt="5 Enviropoints" class="voucher5" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">                       
+                            <p class="voucher15description">Argent: 15 Points</p>
+                            <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
+                            <p class="voucher25description">Doré: 25 Points</p>
+                            <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
+                            <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
+                        </div>
+                    </div>`;
+                } else if (pageName === 'myvouchers' && currentLanguage == 'English') {
+                content = `
+                    <div class="myvouchers-content">
+                        <div class="image-container">
+                            <p class="voucher5description">Total Bronze Vouchers: 99</p>
                             <img src="5 Point Voucher Rounded.png" alt="5 Enviropoints" class="voucher5">                       
-                            <p class="voucher15description">Silver</p>
+                            <p class="voucher15description">Total Silver Vouchers: 99</p>
                             <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
-                            <p class="voucher25description">Gold</p>
+                            <p class="voucher25description">Total Gold Vouchers: 99</p>
                             <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
                             <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                         </div>
                     </div>`;
-            } else if (pageName === 'add' && currentLanguage == 'French') {
+            } else if (pageName === 'myvouchers' && currentLanguage == 'French') {
                 content = `
-                    <div class="add-content">
+                    <div class="myvouchers-content">
                         <div class="image-container">
-                            <p class="voucher5description">Bronze</p>
+                            <p class="voucher5description">Total des bons de bronze: 99</p>
                             <img src="5 Point Voucher Rounded.png" alt="5 Enviropoints" class="voucher5">                       
-                            <p class="voucher15description">Argent</p>
+                            <p class="voucher15description">Total des bons d'argent: 99</p>
                             <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15">
-                            <p class="voucher25description">Doré</p>
+                            <p class="voucher25description">Nombre total de bons d'or: 99</p>
                             <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25">
                             <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                         </div>
@@ -145,8 +220,8 @@
                             <div class="balance-text">Your Balance: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
-                        <button alt="REDEEM" class="redeem" onclick="changePage('add')">Redeem</button>
-                        <button alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">My Vouchers</button>
+                        <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Redeem</button>
+                        <button alt="MYVOUCHERS" class="myvouchersbutton" onclick="changePage('myvouchers')">My Vouchers</button>
                     </div>`;
             } else if (pageName === 'wallet' && currentLanguage == 'French') {
                 content = `
@@ -156,8 +231,8 @@
                             <div class="balance-text">Votre solde: 100</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
-                        <button alt="REDEEM" class="redeem" onclick="changePage('add')">Racheter</button>
-                        <button alt="MYVOUCHERS" class="myvouchers" onclick="changePage('add')">Mes Bons</button>
+                        <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Racheter</button>
+                        <button alt="MYVOUCHERS" class="myvouchersbutton" onclick="changePage('myvouchers')">Mes Bons</button>
                     </div>`;
             } else if (pageName == 'settings' && currentLanguage == 'English') {
                 content = `

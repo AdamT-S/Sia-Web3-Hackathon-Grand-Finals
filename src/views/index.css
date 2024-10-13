@@ -107,7 +107,12 @@ body {
     border: 1px solid #f0f0f0; /* Active icon border color */
 }
 
-.add-content .page-image {
+.redeem-content .page-image {
+    max-width: 200px; /* Adjust image size */
+    height: auto;
+}
+
+.myvouchers-content .page-image {
     max-width: 200px; /* Adjust image size */
     height: auto;
 }
@@ -196,11 +201,11 @@ body {
     margin-right: auto; /* Center horizontally */
 }
 
-.wallet-content .redeem {
+.wallet-content .redeembutton {
     margin-top: 20px;
 }
 
-.wallet-content .myvouchers {
+.wallet-content .myvouchersbutton {
     margin-top: 20px;
 }
 
@@ -237,6 +242,11 @@ body {
 .image-container .voucher5, .image-container .voucher15, .image-container .voucher25 {
     max-width: 200px;
     height: auto;
+}
+
+.voucher5:hover, .voucher15:hover, .voucher25:hover {
+    box-shadow: white 0px 0px 38px, white 0px 0px 38px;
+    cursor: pointer;
 }
 
 .image-container .backbutton {
