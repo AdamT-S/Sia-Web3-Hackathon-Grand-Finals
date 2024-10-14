@@ -244,8 +244,18 @@ body {
     height: auto;
 }
 
-.voucher5:hover, .voucher15:hover, .voucher25:hover {
-    box-shadow: white 0px 0px 38px, white 0px 0px 38px;
+.voucher5:hover {
+    box-shadow: #EBA37F 0px 0px 38px, #EBA37F 0px 0px 38px;
+    cursor: pointer;
+}
+
+.voucher15:hover {
+    box-shadow: #B6B6B6 0px 0px 38px, #B6B6B6 0px 0px 38px;
+    cursor: pointer;
+}
+
+.voucher25:hover {
+    box-shadow: #F2E278 0px 0px 38px, #F2E278 0px 0px 38px;
     cursor: pointer;
 }
 

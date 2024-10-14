@@ -62,51 +62,6 @@ html(lang="en")
           fetchPage(pageName,getLanguage());
       }
 
-      const submitAction = (type, emailInput, passwordInput) => {
-        if (!emailInput || !passwordInput) {
-            alert('Please fill up the registration form.');
-        } else if (!emailRegex.test(emailInput.value)) {
-            alert('Please enter a valid email address with "@" and domain.');
-            return;
-        } else {
-            if (type == 'login') {
-                fetch(`/loginCredentialsCheck?name=${emailInput.value}&password=${passwordInput.value}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data.authorized) {
-                            login(emailInput, passwordInput);
-                        } else {
-                            logout();
-                        }
-                    });
-            } else if (type == 'register') {
-                let requestBody = {
-                    name: emailInput.value,
-                    password: passwordInput.value,
-                };
-
-                fetch(`/register`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestBody),
-                })
-                    .then((response) => response.json())
-                    .then((confirmation) => {
-                        if (confirmation.status == 1) {
-                            emailInput.value = '';
-                            passwordInput.value = '';
-                            alert(confirmation.msg);
-                            window.location.href = window.location.href;
-                        } else {
-                            alert(confirmation.msg);
-                        }
-                    });
-            }
-        }
-      };
-
       function fetchPage(pageName,currentLanguage) {
           let content = '';
           if (pageName === 'home' && currentLanguage == "English") {
