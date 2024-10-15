@@ -190,6 +190,9 @@ body {
     display: block; /* Ensure it's a block-level element for centering */
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 .wallet-content .wallet-image {
@@ -202,11 +205,10 @@ body {
 }
 
 .wallet-content .redeembutton {
-    margin-top: 20px;
-}
-
-.wallet-content .myvouchersbutton {
-    margin-top: 20px;
+    margin-top: 40px;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 /* Center the image */
@@ -317,6 +319,9 @@ button {
     border-radius: 5px;
     transition: .1s ease-in-out;
     cursor: pointer;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 button:hover {
