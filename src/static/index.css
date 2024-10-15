@@ -25,14 +25,16 @@ body {
     right: 0;
     position: fixed;
     width: 100%;
+    background-color: white;
 }
 
-.top-bar .icon {
+.top-bar .wallet-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
     color: #666666; /* Default icon color */
     cursor: pointer;
+    margin-left: 150px;
 
 }
 
@@ -42,6 +44,7 @@ body {
     border-radius: 100%;
     color: #666666; /* Default icon color */
     cursor: pointer;
+    margin-right: 150px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -84,27 +87,33 @@ body {
 
 .bottom-bar {
     text-align: center;
-    position: fixed;
+    padding: 10px 0;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
     bottom: 0;
     left: 0;
+    position: fixed;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
+    background-color: white;
 }
 
-.bottom-bar .icon {
+.bottom-bar .home-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
     color: #666666; /* Default icon color */
+    cursor: pointer;
+    margin-right: 150px;
 }
 
-.bottom-bar .icon.active {
-    color: white;
-    background-color: #f0f0f0; /* Active icon background color */
-    border: 1px solid #f0f0f0; /* Active icon border color */
+.bottom-bar .redeem-icon {
+    font-size: 2.5em;
+    padding: 10px;
+    border-radius: 100%;
+    color: #666666; /* Default icon color */
+    cursor: pointer;
+    margin-left: 150px;
 }
 
 .redeem-content .page-image {
@@ -131,7 +140,7 @@ body {
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
-    height: 560px;
+    height: 1060px;
     margin-top: 85px;
     align-items: center;
 }
@@ -142,15 +151,15 @@ body {
     visibility: hidden;
 }
 
-.home-content .populartext {
+.home-content .hometextone {
     margin-left: 25px;
 }
 
-.home-content .recenttext {
+.home-content .hometexttwo {
     margin-left: 25px;
 }
 
-.home-content .neartext {
+.home-content .hometextthree {
     margin-left: 25px;
 }
 

@@ -7,17 +7,18 @@ html(lang="en")
     link(rel="stylesheet", href="index.css")
     script(type="module", src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js")
     
-  body
+  body    
     .top-bar
       .dropdown
         ion-icon(name="person-circle-outline", class="user-icon", onclick="toggleDropdown()")
         .dropdown-content(id="dropdownContent")
           a(href="#", onclick="changePage('settings')") Account Settings
           a(href="/login") Log Out
-        ion-icon(name="wallet-outline", class="icon", onclick="changePage('wallet')")
+        ion-icon(name="wallet-outline", class="wallet-icon", onclick="changePage('wallet')")
 
     .bottom-bar
-        ion-icon(name="home-outline", class="icon", onclick="changePage('home')")
+        ion-icon(name="home-outline", class="home-icon", onclick="changePage('home')")
+        ion-icon(name="cash-outline", class="redeem-icon", onclick="changePage('redeem')")
 
     #content
       //- Content for pages will be loaded here
@@ -67,22 +68,22 @@ html(lang="en")
             content = `
                 <div class="home-content">
                     <p class ="Spacetext">Spacetext</p>
-                    <p class="populartext">Popular</p>
+                    <p class="hometextone">Offers</p>
                     <div class="popularplaces"></div>
-                    <p class="recenttext">Recently Visited</p>
+                    <p class="hometexttwo">What's New</p>
                     <div class="recentplaces"></div>
-                    <p class="neartext">Near You</p>
+                    <p class="hometextthree">Popular</p>
                     <div class="nearplaces"></div>
                 </div>`;
         } else if (pageName === 'home' && currentLanguage == "French") {
             content = `
                 <div class="home-content">
                     <p class ="Spacetext">Spacetext</p>
-                    <p class="populartext">Populaire</p>
+                    <p class="hometextone">Offres</p>
                     <div class="popularplaces"></div>
-                    <p class="recenttext">Récemment visité</p>
+                    <p class="hometexttwo">Quoi de neuf</p>
                     <div class="recentplaces"></div>
-                    <p class="neartext">Près de chez vous</p>
+                    <p class="hometextthree">Populaire</p>
                     <div class="nearplaces"></div>
                 </div>`;
         } else if (pageName === 'redeem' && currentLanguage == 'English') {
@@ -95,7 +96,6 @@ html(lang="en")
                         <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
                         <p class="voucher25description">Gold: 25 Points</p>
                         <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
-                        <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                     </div>
                 </div>`;
         } else if (pageName === 'redeem' && currentLanguage == 'French') {
@@ -108,7 +108,6 @@ html(lang="en")
                         <img src="15 Point Voucher Rounded.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
                         <p class="voucher25description">Doré: 25 Points</p>
                         <img src="25 Point Voucher Rounded.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
-                        <button alt="BackButton" class="backbutton" onclick="changePage('wallet')">Back</button>
                     </div>
                 </div>`;
         } else if (pageName === 'wallet' && currentLanguage == 'English') {
