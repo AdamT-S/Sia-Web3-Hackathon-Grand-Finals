@@ -1,7 +1,7 @@
 body {
     margin: 0;
     /* background-color: #e2fadc; */
-    background: linear-gradient(to top, #afb1ff, #d8daf7);
+    background: white;
     background-attachment: fixed;
     font-family: sans-serif;
     align-items: center;
@@ -127,7 +127,7 @@ body {
 }
 
 .home-content {
-    background-color: #8cb0fd;
+    background-color: #aaafb9;
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
