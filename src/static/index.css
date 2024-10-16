@@ -61,13 +61,16 @@ body {
 .dropdown-content {
     display: none;
     position: absolute; /* Change position to absolute */
-    top: calc(100% + 10px); /* Position it below the user icon */
-    right: 0; /* Position from the right */
-    background-color: #8cb0fd; /* Green background color */
+    top: calc(100% 10px); /* Position it below the user icon */
+    right: calc(70%); /* Position from the right */
+    background-color: #ffffff; /* Green background color */
     min-width: 190px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 8px;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 .dropdown-content a {
@@ -78,7 +81,7 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #dcedc8; /* Light green hover color */
+    background-color: #bebebe; /* Light green hover color */
 }
 
 .show {
