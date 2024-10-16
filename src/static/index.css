@@ -135,7 +135,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px; /* Adjust margin-top as needed */
+    margin-top: 30px; /* Adjust margin-top as needed */
+}
+
+.balance-text {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    text-align: center;
+}
+
+.image-container .balance-text {
+    margin-top: 100px;
+    margin-bottom: 0px;
 }
 
 .home-content {
@@ -231,13 +241,6 @@ body {
     position: absolute;
 }
 
-
-/* Center the balance text */
-.balance-text {
-    font-size: 1.5em; /* Adjust the font size as needed */
-    text-align: center;
-}
-
 .description {
     text-align: center; /* Center the text */
     margin-top: 5px; /* Add some space between the image and the text */
@@ -250,7 +253,7 @@ body {
 }
 
 .image-container .voucher5description {
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .image-container .voucher5, .image-container .voucher15, .image-container .voucher25 {
