@@ -91,5 +91,20 @@ export default class DatabaseService {
 		}
 	}
 
+	async del_User(email){
+		try{
+			const sql = `
+			DELETE 
+			FROM userinfo
+			WHERE email = "${email}"
+			`
+		}
+		catch (err) {
+			console.error('cannot remove user:', err);
+			return [];
+		}
+	}
+
+
 }
 
