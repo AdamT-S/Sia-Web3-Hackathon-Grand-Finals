@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			if (email.value == 'a@gmail.com' && password.value == 'a') {
 				setCookie('logged', 'true', 1);
 				checkFromCookies();
-				window.location.href = '/continents';
+				window.location.href = '/';
 			} else {
 				setCookie('logged', 'false', 1);
 				checkFromCookies();

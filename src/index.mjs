@@ -51,12 +51,20 @@ const {conn} = db;
 app.get('/', (req, res) => {
 	res.render('index');
 });
+
 // Landing route
 app.get('/admin?delete:name', (req, res) => {
 	console.log(reg.params.name);
 
 	deleteIt(reg.params.name);
 });
+
+
+// Login route
+app.get('/login', (req, res) => {
+	res.render('login');
+});
+
 
 // Run server!
 app.listen(port, () => {
