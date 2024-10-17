@@ -94,7 +94,7 @@ export default class DatabaseService {
 	async del_User(email){
 		try{
 			const sql = `
-			DELETE 
+			DELETE
 			FROM userinfo
 			WHERE email = "${email}"
 			`
