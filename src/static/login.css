@@ -6,7 +6,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Jost' , sans-serif;
-    background: linear-gradient(to top, #afb1ff, #d8daf7);
+    background: linear-gradient(to top, #ace896, #d8daf7);
     background-attachment: fixed;
 }
 
@@ -20,7 +20,7 @@ body {
     position: relative;
     width: 100%;
     height: 400px;
-    background: #a0c3f5;
+    background: #a9d09b;
 }
 
 label {
@@ -70,7 +70,7 @@ button:hover {
 
 .Login {
     height: 460px;
-    background: #a0c3f5;
+    background: #a9d09b;
 }
 
 .Login .Spacetext {
