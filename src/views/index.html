@@ -71,57 +71,6 @@
             fetchPage(pageName,getLanguage());
         }
 
-    const submitAction = (type, emailInput, passwordInput) => {
-	// If empty form submitted
-	if (!emailInput || !passwordInput) {
-		alert('Please fill up the registration form.');
-	} else if (!emailRegex.test(emailInput.value)) {
-		// Handle invalid email format
-		alert('Please enter a valid email address with "@" and domain.');
-		return;
-	} else {
-		// If successes
-		if (type == 'login') {
-			// Call backend to validate user credentials
-			fetch(`/loginCredentialsCheck?name=${emailInput.value}&password=${passwordInput.value}`)
-				.then((response) => response.json())
-				.then((data) => {
-					// Return JSON with 'authorized' boolean
-					if (data.authorized) {
-						login(emailInput, passwordInput);
-					} else {
-						logout();
-					}
-				});
-		} else if (type == 'register') {
-			// Construct the request body
-			let requestBody = {
-				name: emailInput.value,
-				password: passwordInput.value,
-			};
-
-			fetch(`/register`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(requestBody),
-			})
-				.then((response) => response.json())
-				.then((confirmation) => {
-					if (confirmation.status == 1) {
-						emailInput.value = '';
-						passwordInput.value = '';
-						alert(confirmation.msg);
-						window.location.href = window.location.href;
-					} else {
-						alert(confirmation.msg);
-					}
-				});
-		}
-	}
-};
-
         function fetchPage(pageName,currentLanguage) {
             // Simulate fetching content based on pageName
             let content = '';
