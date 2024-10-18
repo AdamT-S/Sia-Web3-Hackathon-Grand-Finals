@@ -118,6 +118,20 @@ export default class DatabaseService {
 		}
 	}
 
+	async Get_shop(ShopID){
+		try{
+			const sql = `
+			SELECT * 
+			FROM store_info 
+			WHERE Store_ID = '${ShopID}';
+			`
+		}
+		catch (err) {
+			console.error('cannot add tokens:', err);
+			return [];
+	}
+}
+
 
 }
 
