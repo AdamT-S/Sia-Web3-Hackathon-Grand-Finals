@@ -13,9 +13,9 @@ html(lang="en")
         form
           label.Spacetext Spacetext
           label Log in
-          input(type="email", name="email", placeholder="Email", required="")
-          input(type="password", name="pswd", placeholder="Password", required="")
-          button Log in
+          input.login(name="email", placeholder="Email")
+          input.password(name="password", placeholder="Password")
+          button(type="submit") Log in
 
       //- Sign up class and label
       //- .signup
@@ -24,3 +24,5 @@ html(lang="en")
       //-     input(type="email", name="email", placeholder="Email", required="")
       //-     input(type="password", name="pswd", placeholder="Password", required="")
       //-     button Sign up
+
+    script(src="/services/actions.js")

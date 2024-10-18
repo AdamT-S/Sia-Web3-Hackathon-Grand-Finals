@@ -84,13 +84,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	checkFromCookies();
 
 	if (window.location.pathname == '/login') {
-		const email = document.querySelector('input[type="email"]');
+		const email = document.querySelector('input[name="email"]');
 		email.addEventListener('change', (e) => console.log('email: ', e.target.value));
-		const password = document.querySelector('input[type="password"]');
+		const password = document.querySelector('input[name="password"]');
 		password.addEventListener('change', (e) => console.log('password: ', e.target.value));
 
 		const btn = document.querySelector('button[type="submit"]');
-		btn.prevent;
+
 		btn.addEventListener('click', (e) => {
 			e.preventDefault();
 			console.log('email.value : ', email.value);
