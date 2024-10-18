@@ -84,7 +84,7 @@ const checkFromCookies = () => {
 document.addEventListener('DOMContentLoaded', (event) => {
 	checkFromCookies();
 
-	if (window.location.pathname == '/login') {
+	if (window.location.pathname == '/' || window.location.pathname == '/login') {
 		const email = document.querySelector('input[name="email"]');
 		email.addEventListener('change', (e) => console.log('email: ', e.target.value));
 		const password = document.querySelector('input[name="password"]');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			if (email.value == 'a@gmail.com' && password.value == 'a') {
 				setCookie('logged', 'true', 1);
 				checkFromCookies();
-				window.location.href = '/';
+				window.location.href = '/index';
 			} else {
 				setCookie('logged', 'false', 1);
 				checkFromCookies();

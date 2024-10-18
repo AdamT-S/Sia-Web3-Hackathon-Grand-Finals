@@ -49,7 +49,7 @@ const {conn} = db;
 
 // Landing route
 app.get('/', (req, res) => {
-	res.render('index');
+	res.render('login');
 });
 
 // Landing route
@@ -59,6 +59,10 @@ app.get('/admin?delete:name', (req, res) => {
 	deleteIt(reg.params.name);
 });
 
+// Login route
+app.get('/index', (req, res) => {
+	res.render('index');
+});
 
 // Login route
 app.get('/login', (req, res) => {
