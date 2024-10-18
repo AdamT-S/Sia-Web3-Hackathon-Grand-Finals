@@ -38,6 +38,19 @@ export default class DatabaseService {
 		}
 	}
 
+	async Get_tokens(email){
+		try{
+			const sql = `
+			SELECT Tokens
+			FROM userinfo
+			WHERE email = '${email}';
+			`
+		}
+		catch (err) {
+			console.error('cannot add tokens:', err);
+			return [];
+	}
+}
 	async Add_tokens(email, more_tokens){
 		try{
 			const sql = `
