@@ -132,6 +132,18 @@ export default class DatabaseService {
 	}
 }
 
+async add_Shop(ShopID, Shop_name, voucherID, store_image, store_type){
+	try{
+		const sql = `
+		INSERT INTO store_info (Store_ID, Store_Name, Voucher_ID, store_image, Store_Type)
+VALUES ("${ShopID}", "${Shop_name}", "${voucherID}", "${store_image}", "${store_type}" )
+		`
+	}
+	catch (err) {
+		console.error('cannot add user:', err);
+		return [];
+	}
+}
 
 }
 
