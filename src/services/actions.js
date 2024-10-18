@@ -80,6 +80,7 @@ const checkFromCookies = () => {
 	}
 };
 
+// Where a user's email and password are checked
 document.addEventListener('DOMContentLoaded', (event) => {
 	checkFromCookies();
 
