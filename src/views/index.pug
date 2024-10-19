@@ -125,11 +125,12 @@ html(lang="en")
             fetch('/api/tokens')
               .then(response => response.json())
               .then(data => {
+                  const tokenBalance = data.tokens ? data.tokens : '0';
                   content = `
                     <div class="wallet-content">
                       <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
                       <div class="balance-display">
-                        <div class="balance-text">Your Balance: ${data.tokens}</div>
+                        <div class="balance-text">Your Balance: ${tokenBalance}</div>
                       </div>
                       <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                       <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Redeem</button>

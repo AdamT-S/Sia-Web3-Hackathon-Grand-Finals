@@ -79,12 +79,16 @@ app.listen(port, () => {
 app.use(express.json());
 
 app.post('/login', async (req, res) => {
+	console.log('Login route hit'); // Add this line
     const { email, password } = req.body;
     const dbService = await DatabaseService.connect();
     const isLoggedIn = await dbService.Login(email, password);
 
     if (isLoggedIn) {
+		req.session.userEmail = email;
+        console.log('User logged in:', email);
         res.json({ success: true });
+		localStorage.setItems(email)
     } else {
         res.json({ success: false });
     }
@@ -92,10 +96,11 @@ app.post('/login', async (req, res) => {
 
 app.get('/api/tokens', async (req, res) => {
     try {
-        const email = req.query.email;  // Assuming the email is passed as a query parameter
+        const email = getCookie("userEmail");  // Assuming the email is passed as a query parameter
         const db = await DatabaseService.connect();
-        const tokens = await DatabaseService.Get_tokens(email);
-        res.json({ tokens: tokens });
+        const tokens = await db.Get_tokens(email);
+		const tokenCount = tokens.length > 0 ? tokens[0].tokens : 0; 
+        res.json({ tokens: tokenCount });
     } catch (err) {
         console.error('Error fetching tokens:', err);
         res.status(500).json({ error: 'Unable to fetch token balance' });
