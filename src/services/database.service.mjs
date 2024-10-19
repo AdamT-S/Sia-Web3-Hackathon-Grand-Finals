@@ -36,7 +36,7 @@ export default class DatabaseService {
         }
     }
 
-	static async Get_tokens(email) {
+	async Get_tokens(email) {
         try {
             // Assuming you're using a SQL query with a `users` table that stores tokens.
             const sql = 'SELECT tokens FROM userinfo WHERE email = ?';
