@@ -1,11 +1,11 @@
 /* Import dependencies */
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import session from 'express-session';
 import { } from 'module';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import DatabaseService from './services/database.service.mjs';
-import cookieParser from 'cookie-parser';
 
 /* Create express instance */
 const app = express();
@@ -97,7 +97,7 @@ app.post('/login', async (req, res) => {
 app.get('/api/tokens', async (req, res) => {
     try {
 		const email = req.cookies.userEmail;  // Access the email from cookies        const db = await DatabaseService.connect();
-        const tokens = await dbService.Get_tokens(email);
+        const tokens = await DatabaseService.Get_tokens(email);
 		const tokenCount = tokens.length > 0 ? tokens[0].tokens : 0; 
         res.json({ tokens: tokenCount });
     } catch (err) {
