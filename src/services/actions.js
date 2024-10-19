@@ -10,29 +10,7 @@ function updateLimit() {
 		window.location.search = search.replace('?', `?N=${N}&`);
 	}
 }
-// Function to filter the records
-function filter() {
-	let filterCity = document.querySelector('input[name="filterCity"]');
-	let filterDistrict = document.querySelector('input[name="filterDistrict"]');
-	let filterCountry = document.querySelector('input[name="filterCountry"]');
-	let filterRegion = document.querySelector('input[name="filterRegion"]');
-	let filterContinent = document.querySelector('input[name="filterContinent"]');
-	let filterCityV = filterCity.value;
-	let filterDistrictV = filterDistrict.value;
-	let filterCountryV = filterCountry.value;
-	let filterRegionV = filterRegion.value;
-	let filterContinentV = filterContinent.value;
-	console.log(`filterCity ${filterCityV}`);
-	console.log(`filterDistrictV ${filterDistrictV}`);
-	console.log(`filterCountryV ${filterCountryV}`);
-	console.log(`filterRegionV ${filterRegionV}`);
-	console.log(`filterContinentV ${filterContinentV}`);
 
-	window.location.href =
-		window.location.pathname +
-		`?filterCity=${filterCityV}&filterDistrict=${filterDistrictV}&filterCountry=${filterCountryV}&filterRegion=${filterRegionV}&filterContinent=${filterContinentV}`;
-	[filterCityV, filterCountryV, filterContinentV] = [0, 0, 0];
-}
 
 // Function to set a cookie
 function setCookie(name, value, days) {
