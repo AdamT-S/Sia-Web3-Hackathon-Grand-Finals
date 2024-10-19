@@ -94,7 +94,7 @@ app.get('/api/tokens', async (req, res) => {
     try {
         const email = req.query.email;  // Assuming the email is passed as a query parameter
         const db = await DatabaseService.connect();
-        const tokens = await db.Get_tokens(email);
+        const tokens = await DatabaseService.Get_tokens(email);
         res.json({ tokens: tokens });
     } catch (err) {
         console.error('Error fetching tokens:', err);
