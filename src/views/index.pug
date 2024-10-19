@@ -121,7 +121,7 @@ html(lang="en")
                     </div>
                 </div>`;
         } else if (pageName === 'wallet' && currentLanguage == 'English') {
-             // Fetch wallet data dynamically
+            // Fetch wallet data dynamically
             fetch('/api/tokens')
               .then(response => response.json())
               .then(data => {
@@ -143,15 +143,27 @@ html(lang="en")
                   document.getElementById('content').innerHTML = content;
               });
         } else if (pageName === 'wallet' && currentLanguage == 'French') {
-            content = `
-                <div class="wallet-content">
-                    <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
-                    <div class="balance-display">
-                        <div class="balance-text">Votre solde: 100</div>
-                    </div>
-                    <img src="github-qr-code.png" alt="QR Code" class="qr-code">
-                    <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Racheter</button>
-                </div>`;
+            // Fetch wallet data dynamically
+            fetch('/api/tokens')
+              .then(response => response.json())
+              .then(data => {
+                  const tokenBalance = data.tokens ? data.tokens : '0';
+                  content = `
+                    <div class="wallet-content">
+                        <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
+                        <div class="balance-display">
+                            <div class="balance-text">Votre solde: ${tokenBalance}</div>
+                        </div>
+                        <img src="github-qr-code.png" alt="QR Code" class="qr-code">
+                        <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Racheter</button>
+                    </div>`;
+                  document.getElementById('content').innerHTML = content;
+              })
+              .catch(err => {
+                  console.error('Error fetching tokens:', err);
+                  content = `<p>Error fetching your token balance</p>`;
+                  document.getElementById('content').innerHTML = content;
+              });
         } else if (pageName == 'settings' && currentLanguage == 'English') {
             content = `
                 <div class="settings-content">
