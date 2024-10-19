@@ -85,10 +85,7 @@ app.post('/login', async (req, res) => {
     const isLoggedIn = await dbService.Login(email, password);
 
     if (isLoggedIn) {
-		req.session.userEmail = email;
-        console.log('User logged in:', email);
         res.json({ success: true });
-		localStorage.setItems(email)
     } else {
         res.json({ success: false });
     }
