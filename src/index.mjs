@@ -1,9 +1,9 @@
 /* Import dependencies */
 import express from 'express';
 import session from 'express-session';
-import {} from 'module';
-import path, {dirname} from 'path';
-import {fileURLToPath} from 'url';
+import { } from 'module';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import DatabaseService from './services/database.service.mjs';
 
 /* Create express instance */
@@ -73,4 +73,19 @@ app.get('/login', (req, res) => {
 // Run server!
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
+});
+
+
+app.use(express.json());
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const dbService = await DatabaseService.connect();
+    const isLoggedIn = await dbService.Login(email, password);
+
+    if (isLoggedIn) {
+        res.json({ success: true });
+    } else {
+        res.json({ success: false });
+    }
 });

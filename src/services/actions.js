@@ -59,29 +59,36 @@ const checkFromCookies = () => {
 };
 
 // Where a user's email and password are checked
-document.addEventListener('DOMContentLoaded', (event) => {
-	checkFromCookies();
+document.addEventListener('DOMContentLoaded', async (event) => {
+    checkFromCookies();
 
-	if (window.location.pathname == '/' || window.location.pathname == '/login') {
-		const email = document.querySelector('input[name="email"]');
-		email.addEventListener('change', (e) => console.log('email: ', e.target.value));
-		const password = document.querySelector('input[name="password"]');
-		password.addEventListener('change', (e) => console.log('password: ', e.target.value));
+    if (window.location.pathname == '/' || window.location.pathname == '/login') {
+        const email = document.querySelector('input[name="email"]');
+        const password = document.querySelector('input[name="password"]');
+        const btn = document.querySelector('button[type="submit"]');
 
-		const btn = document.querySelector('button[type="submit"]');
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const emailValue = email.value;
+            const passwordValue = password.value;
 
-		btn.addEventListener('click', (e) => {
-			e.preventDefault();
-			console.log('email.value : ', email.value);
-			console.log('password.value : ', password.value);
-			if (email.value == 'a@gmail.com' && password.value == 'a') {
-				setCookie('logged', 'true', 1);
-				checkFromCookies();
-				window.location.href = '/index';
-			} else {
-				setCookie('logged', 'false', 1);
-				checkFromCookies();
-			}
-		});
-	}
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: emailValue, password: passwordValue }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setCookie('logged', 'true', 1);
+                checkFromCookies();
+                window.location.href = '/index';
+            } else {
+                setCookie('logged', 'false', 1);
+                checkFromCookies();
+            }
+        });
+    }
 });

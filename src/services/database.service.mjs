@@ -21,22 +21,20 @@ export default class DatabaseService {
 
 	/* User Login */
 	async Login(email, password) {
-		try {
-			const sql = `
-        SELECT *
-		FROM userinfo
-		WHERE email = "${email}" AND user_pass = "${password}"
-		`;
-			const [rows, fields] = await this.conn.execute(sql);
-			const row = rows[0];
-			// console.log(gotContinent);
-			console.log("Login() executed sucessfully");
-			return gotContinent;
-		} catch (err) {
-			console.error('email or password is wrong:', err);
-			return [];
-		}
-	}
+        try {
+            const sql = `
+                SELECT *
+                FROM userinfo
+                WHERE email = ? AND user_pass = ?
+            `;
+            const [rows] = await this.conn.execute(sql, [email, password]);
+            console.log("login() executed successfully");
+            return rows.length > 0;
+        } catch (err) {
+            console.error('email or password is wrong:', err);
+            return false;
+        }
+    }
 
 	async Get_tokens(email){
 		try{
