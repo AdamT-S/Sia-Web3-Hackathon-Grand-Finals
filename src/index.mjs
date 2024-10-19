@@ -1,4 +1,5 @@
 /* Import dependencies */
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import session from 'express-session';
 import { } from 'module';
@@ -15,6 +16,8 @@ const __dirname = dirname(__filename);
 
 /* Add form data middleware */
 app.use(express.urlencoded({extended: true}));
+
+app.use(cookieParser());
 
 app.get('*.js', function (req, res) {
 	res.type('application/javascript');
@@ -79,6 +82,7 @@ app.listen(port, () => {
 app.use(express.json());
 
 app.post('/login', async (req, res) => {
+	console.log('Login route hit'); // Add this line
     const { email, password } = req.body;
     const dbService = await DatabaseService.connect();
     const isLoggedIn = await dbService.Login(email, password);
@@ -92,10 +96,11 @@ app.post('/login', async (req, res) => {
 
 app.get('/api/tokens', async (req, res) => {
     try {
-        const email = req.query.email;  // Assuming the email is passed as a query parameter
-        const db = await DatabaseService.connect();
-        const tokens = await DatabaseService.Get_tokens(email);
-        res.json({ tokens: tokens });
+		const email = req.cookies.userEmail;  // Access the email from cookies
+		const db = await DatabaseService.connect();
+        const tokens = await db.Get_tokens(email);
+		const tokenCount = tokens.length > 0 ? tokens[0].tokens : 0;
+        res.json({ tokens: tokenCount });
     } catch (err) {
         console.error('Error fetching tokens:', err);
         res.status(500).json({ error: 'Unable to fetch token balance' });

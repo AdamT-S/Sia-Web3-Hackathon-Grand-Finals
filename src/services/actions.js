@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             const result = await response.json();
             if (result.success) {
                 setCookie('logged', 'true', 1);
+				setCookie('userEmail', emailValue)
                 checkFromCookies();
                 window.location.href = '/index';
             } else {
