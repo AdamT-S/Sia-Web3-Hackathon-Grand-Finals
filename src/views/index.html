@@ -166,12 +166,13 @@
                     <div class="wallet-content">
                         <img src="Wallet Icon.png" alt="wallet-image" class="wallet-image">
                         <div class="balance-display">
-                            <div class="balance-text">Your Balance: 100</div>
+                            <div class="balance-text">Your Balance: ${tokens}</div>
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Redeem</button>
-                        <button alt="MYVOUCHERS" class="myvouchersbutton" onclick="changePage('myvouchers')">My Vouchers</button>
                     </div>`;
+
+                document.getElementById('content').innerHTML = content;
             } else if (pageName === 'wallet' && currentLanguage == 'French') {
                 content = `
                     <div class="wallet-content">

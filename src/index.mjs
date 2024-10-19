@@ -89,3 +89,16 @@ app.post('/login', async (req, res) => {
         res.json({ success: false });
     }
 });
+
+app.get('/api/tokens', async (req, res) => {
+    try {
+        const email = req.query.email;  // Assuming the email is passed as a query parameter
+        const db = await DatabaseService.connect();
+        const tokens = await DatabaseService.Get_tokens(email);
+        res.json({ tokens: tokens });
+    } catch (err) {
+        console.error('Error fetching tokens:', err);
+        res.status(500).json({ error: 'Unable to fetch token balance' });
+    }
+});
+

@@ -36,19 +36,21 @@ export default class DatabaseService {
         }
     }
 
-	async Get_tokens(email){
-		try{
-			const sql = `
-			SELECT Tokens
-			FROM userinfo
-			WHERE email = '${email}';
-			`
+	static async Get_tokens(email) {
+        try {
+            // Assuming you're using a SQL query with a `users` table that stores tokens.
+            const sql = 'SELECT tokens FROM userinfo WHERE email = ?';
+			
+			const [rows] = await this.conn.execute(sql, [email]);
+            console.log("Tokens succesfully fetched");
+            return rows.length > 0;
+        } catch (error) {
+            console.error('Error in Get_tokens:', error);
+            throw error;  // Re-throw the error so it can be handled by the calling function
 		}
-		catch (err) {
-			console.error('cannot add tokens:', err);
-			return [];
 	}
-}
+
+	
 	async Add_tokens(email, more_tokens){
 		try{
 			const sql = `
