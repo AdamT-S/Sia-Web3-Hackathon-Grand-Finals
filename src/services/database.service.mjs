@@ -38,12 +38,11 @@ export default class DatabaseService {
 
 	async Get_tokens(email) {
         try {
-            // Assuming you're using a SQL query with a `users` table that stores tokens.
             const sql = 'SELECT tokens FROM userinfo WHERE email = ?';
 			
 			const [rows] = await this.conn.execute(sql, [email]);
             console.log("Tokens succesfully fetched");
-            return rows.length > 0;
+            return rows;
         } catch (error) {
             console.error('Error in Get_tokens:', error);
             throw error;  // Re-throw the error so it can be handled by the calling function

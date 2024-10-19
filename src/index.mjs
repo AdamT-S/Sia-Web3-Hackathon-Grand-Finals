@@ -96,9 +96,10 @@ app.post('/login', async (req, res) => {
 
 app.get('/api/tokens', async (req, res) => {
     try {
-		const email = req.cookies.userEmail;  // Access the email from cookies        const db = await DatabaseService.connect();
-        const tokens = await DatabaseService.Get_tokens(email);
-		const tokenCount = tokens.length > 0 ? tokens[0].tokens : 0; 
+		const email = req.cookies.userEmail;  // Access the email from cookies
+		const db = await DatabaseService.connect();
+        const tokens = await db.Get_tokens(email);
+		const tokenCount = tokens.length > 0 ? tokens[0].tokens : 0;
         res.json({ tokens: tokenCount });
     } catch (err) {
         console.error('Error fetching tokens:', err);
