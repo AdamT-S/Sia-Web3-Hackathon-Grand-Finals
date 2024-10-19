@@ -10,29 +10,7 @@ function updateLimit() {
 		window.location.search = search.replace('?', `?N=${N}&`);
 	}
 }
-// Function to filter the records
-function filter() {
-	let filterCity = document.querySelector('input[name="filterCity"]');
-	let filterDistrict = document.querySelector('input[name="filterDistrict"]');
-	let filterCountry = document.querySelector('input[name="filterCountry"]');
-	let filterRegion = document.querySelector('input[name="filterRegion"]');
-	let filterContinent = document.querySelector('input[name="filterContinent"]');
-	let filterCityV = filterCity.value;
-	let filterDistrictV = filterDistrict.value;
-	let filterCountryV = filterCountry.value;
-	let filterRegionV = filterRegion.value;
-	let filterContinentV = filterContinent.value;
-	console.log(`filterCity ${filterCityV}`);
-	console.log(`filterDistrictV ${filterDistrictV}`);
-	console.log(`filterCountryV ${filterCountryV}`);
-	console.log(`filterRegionV ${filterRegionV}`);
-	console.log(`filterContinentV ${filterContinentV}`);
 
-	window.location.href =
-		window.location.pathname +
-		`?filterCity=${filterCityV}&filterDistrict=${filterDistrictV}&filterCountry=${filterCountryV}&filterRegion=${filterRegionV}&filterContinent=${filterContinentV}`;
-	[filterCityV, filterCountryV, filterContinentV] = [0, 0, 0];
-}
 
 // Function to set a cookie
 function setCookie(name, value, days) {
@@ -80,29 +58,37 @@ const checkFromCookies = () => {
 	}
 };
 
-document.addEventListener('DOMContentLoaded', (event) => {
-	checkFromCookies();
+// Where a user's email and password are checked
+document.addEventListener('DOMContentLoaded', async (event) => {
+    checkFromCookies();
 
-	if (window.location.pathname == '/login') {
-		const email = document.querySelector('input[type="email"]');
-		email.addEventListener('change', (e) => console.log('email: ', e.target.value));
-		const password = document.querySelector('input[type="password"]');
-		password.addEventListener('change', (e) => console.log('password: ', e.target.value));
+    if (window.location.pathname == '/' || window.location.pathname == '/login') {
+        const email = document.querySelector('input[name="email"]');
+        const password = document.querySelector('input[name="password"]');
+        const btn = document.querySelector('button[type="submit"]');
 
-		const btn = document.querySelector('button[type="submit"]');
-		btn.prevent;
-		btn.addEventListener('click', (e) => {
-			e.preventDefault();
-			console.log('email.value : ', email.value);
-			console.log('password.value : ', password.value);
-			if (email.value == 'a@gmail.com' && password.value == 'a') {
-				setCookie('logged', 'true', 1);
-				checkFromCookies();
-				window.location.href = '/continents';
-			} else {
-				setCookie('logged', 'false', 1);
-				checkFromCookies();
-			}
-		});
-	}
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const emailValue = email.value;
+            const passwordValue = password.value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: emailValue, password: passwordValue }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setCookie('logged', 'true', 1);
+                checkFromCookies();
+                window.location.href = '/index';
+            } else {
+                setCookie('logged', 'false', 1);
+                checkFromCookies();
+            }
+        });
+    }
 });

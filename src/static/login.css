@@ -6,7 +6,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Jost' , sans-serif;
-    background: linear-gradient(to top, #afb1ff, #d8daf7);
+    background: linear-gradient(to top, #ace896, #d8daf7);
     background-attachment: fixed;
 }
 
@@ -16,15 +16,11 @@ body {
     /* background: #67a1f3; */
 }
 
-.spacer {
-    height: 100px;
-}
-
 .signup {
     position: relative;
     width: 100%;
     height: 400px;
-    background: #a0c3f5;
+    background: #a9d09b;
 }
 
 label {
@@ -72,9 +68,31 @@ button:hover {
     background: #c7c7c7;
 }
 
+a.button {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: black;
+    background: white;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+}
+
+a.button:hover {
+    background: #c7c7c7;
+}
+
 .Login {
     height: 460px;
-    background: #a0c3f5;
+    background: #a9d09b;
 }
 
 .Login .Spacetext {

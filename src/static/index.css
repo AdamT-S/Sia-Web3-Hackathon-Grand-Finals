@@ -1,6 +1,8 @@
 body {
     margin: 0;
-    background-color: #cefebf;
+    /* background-color: #e2fadc; */
+    background: white;
+    background-attachment: fixed;
     font-family: sans-serif;
     align-items: center;
 }
@@ -13,6 +15,20 @@ body {
     
 }
 
+.loginOverlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    filter: blur(5px);
+    z-index: 2;
+  }
+
 .top-bar {
     text-align: center;
     padding: 10px 0;
@@ -23,14 +39,16 @@ body {
     right: 0;
     position: fixed;
     width: 100%;
+    background-color: rgb(172, 232, 150);
 }
 
-.top-bar .icon {
+.top-bar .wallet-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
     color: #666666; /* Default icon color */
     cursor: pointer;
+    margin-left: 150px;
 
 }
 
@@ -40,6 +58,7 @@ body {
     border-radius: 100%;
     color: #666666; /* Default icon color */
     cursor: pointer;
+    margin-right: 150px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -56,13 +75,16 @@ body {
 .dropdown-content {
     display: none;
     position: absolute; /* Change position to absolute */
-    top: calc(100% + 10px); /* Position it below the user icon */
-    right: 0; /* Position from the right */
-    background-color: #bbec83; /* Green background color */
+    top: calc(100% 10px); /* Position it below the user icon */
+    right: calc(70%); /* Position from the right */
+    background-color: #ffffff; /* Green background color */
     min-width: 190px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 8px;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 .dropdown-content a {
@@ -73,7 +95,7 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #dcedc8; /* Light green hover color */
+    background-color: #bebebe; /* Light green hover color */
 }
 
 .show {
@@ -82,30 +104,41 @@ body {
 
 .bottom-bar {
     text-align: center;
-    position: fixed;
+    padding: 10px 0;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
     bottom: 0;
     left: 0;
+    position: fixed;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for separation */
+    background-color: rgb(172, 232, 150);
 }
 
-.bottom-bar .icon {
+.bottom-bar .home-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
     color: #666666; /* Default icon color */
+    cursor: pointer;
+    margin-right: 150px;
 }
 
-.bottom-bar .icon.active {
-    color: white;
-    background-color: #f0f0f0; /* Active icon background color */
-    border: 1px solid #f0f0f0; /* Active icon border color */
+.bottom-bar .redeem-icon {
+    font-size: 2.5em;
+    padding: 10px;
+    border-radius: 100%;
+    color: #666666; /* Default icon color */
+    cursor: pointer;
+    margin-left: 150px;
 }
 
-.add-content .page-image {
+.redeem-content .page-image {
+    max-width: 200px; /* Adjust image size */
+    height: auto;
+}
+
+.myvouchers-content .page-image {
     max-width: 200px; /* Adjust image size */
     height: auto;
 }
@@ -116,17 +149,45 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px; /* Adjust margin-top as needed */
+    margin-top: 30px; /* Adjust margin-top as needed */
+}
+
+.balance-text {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    text-align: center;
+}
+
+.image-container .balance-text {
+    margin-top: 100px;
+    margin-bottom: 0px;
 }
 
 .home-content {
-    background-color: #D9D9D9;
+    background-color: #aaafb9;
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
-    height: 560px;
+    height: 1060px;
     margin-top: 85px;
     align-items: center;
+}
+
+.home-content .Spacetext {
+    margin-top: 100px;
+    margin-bottom: -5px;
+    visibility: hidden;
+}
+
+.home-content .hometextone {
+    margin-left: 25px;
+}
+
+.home-content .hometexttwo {
+    margin-left: 25px;
+}
+
+.home-content .hometextthree {
+    margin-left: 25px;
 }
 
 .home-content .popularplaces {
@@ -150,32 +211,6 @@ body {
     height: 120px;
 }
 
-.home-content .qr-code {
-    max-width: 150px; /* Adjust image size */
-    height: auto;
-    margin-top: 20px; /* Adjust margin-top as needed */
-    display: block; /* Ensure it's a block-level element for centering */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-
-.home-content .wallet-image {
-    max-width: 150px; /* Adjust image size */
-    height: auto;
-    margin-top: 100px; /* Adjust margin-top as needed */
-    display: block; /* Ensure it's a block-level element for centering */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-
-.home-content .redeem {
-    margin-top: 20px;
-}
-
-.home-content .myvouchers {
-    margin-top: 20px;
-}
-
 /* Center the image */
 .home-content .image-container {
     display: flex;
@@ -191,6 +226,9 @@ body {
     display: block; /* Ensure it's a block-level element for centering */
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 .wallet-content .wallet-image {
@@ -202,12 +240,11 @@ body {
     margin-right: auto; /* Center horizontally */
 }
 
-.wallet-content .redeem {
-    margin-top: 20px;
-}
-
-.wallet-content .myvouchers {
-    margin-top: 20px;
+.wallet-content .redeembutton {
+    margin-top: 40px;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 /* Center the image */
@@ -216,13 +253,6 @@ body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-}
-
-
-/* Center the balance text */
-.balance-text {
-    font-size: 1.5em; /* Adjust the font size as needed */
-    text-align: center;
 }
 
 .description {
@@ -237,12 +267,27 @@ body {
 }
 
 .image-container .voucher5description {
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .image-container .voucher5, .image-container .voucher15, .image-container .voucher25 {
     max-width: 200px;
     height: auto;
+}
+
+.voucher5:hover {
+    box-shadow: #EBA37F 0px 0px 38px, #EBA37F 0px 0px 38px;
+    cursor: pointer;
+}
+
+.voucher15:hover {
+    box-shadow: #B6B6B6 0px 0px 38px, #B6B6B6 0px 0px 38px;
+    cursor: pointer;
+}
+
+.voucher25:hover {
+    box-shadow: #F2E278 0px 0px 38px, #F2E278 0px 0px 38px;
+    cursor: pointer;
 }
 
 .image-container .backbutton {
@@ -263,6 +308,20 @@ body {
 
 .settings-content .Languages {
     font-size: 2em;
+    width: 150px;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: black;
+    background: white;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+
 }
 
 /* Center the image
@@ -289,6 +348,9 @@ button {
     border-radius: 5px;
     transition: .1s ease-in-out;
     cursor: pointer;
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
 }
 
 button:hover {
