@@ -67,22 +67,26 @@ export default class DatabaseService {
 	}
 }
 
-async Add_Dev_tokens(email){
-	try{
-		const sql = `
-		UPDATE userinfo 
-		SET tokens = tokens + 5000
-		WHERE email = ?; 
-		`
-		const [result] = await this.conn.execute(sql, [email]); // Pass the parameters properly
-        console.log("Tokens added");
-        return result;
+async Add_Dev_tokens(email) {
+    try {
+        const sql = `
+        UPDATE userinfo 
+        SET tokens = tokens + 5000
+        WHERE email = ?;
+        `;
 
-	}
-	catch (err) {
-		console.error('Cannot add tokens:', err);
-		return [];
-	}
+        // Execute the SQL query with proper parameter binding
+        const [result] = await this.conn.execute(sql, [email]);
+
+        // Log the success message
+        console.log("5000 tokens added successfully for email:", email);
+        
+        return result; // Return the result
+    } catch (err) {
+        // Log the error message if any exception occurs
+        console.error('Error while adding dev tokens:', err);
+        throw err; // Re-throw the error to let the caller handle it
+    }
 }
 
 
