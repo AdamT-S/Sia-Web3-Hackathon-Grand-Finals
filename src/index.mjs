@@ -95,15 +95,22 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
-	console.log('Signup route hit'); // Add this line
+    console.log('Signup route hit');
     const { email, confirmPassword } = req.body;
-    const dbService = await DatabaseService.connect();
-    const addedUser = await dbService.add_User(email, confirmPassword);
 
-	if (addedUser) {
-        res.json({ success: true });
-    } else {
-        res.json({ success: false });
+    try {
+        const dbService = await DatabaseService.connect();
+        const addedUser = await dbService.add_User(email, confirmPassword);
+
+        if (addedUser) {
+            res.json({ success: true });
+        } else {
+            res.json({ success: false });
+        }
+        console.log('succesully created account')
+    } catch (err) {
+        console.error('Error during signup:', err);
+        res.status(500).json({ success: false, error: 'Sign-up failed' });
     }
 });
 

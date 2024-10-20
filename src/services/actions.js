@@ -62,12 +62,13 @@ const checkFromCookies = () => {
 document.addEventListener('DOMContentLoaded', async (event) => {
     checkFromCookies();
 
+    // Login functionality
     if (window.location.pathname == '/' || window.location.pathname == '/login') {
         const email = document.querySelector('input[name="email"]');
         const password = document.querySelector('input[name="password"]');
-        const btn = document.querySelector('button[name="loginButton"]');
+        const loginBtn = document.querySelector('button[name="loginButton"]');
 
-        btn.addEventListener('click', async (e) => {
+        loginBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             const emailValue = email.value;
             const passwordValue = password.value;
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             const result = await response.json();
             if (result.success) {
                 setCookie('logged', 'true', 1);
-				setCookie('userEmail', emailValue)
+                setCookie('userEmail', emailValue);
                 checkFromCookies();
                 window.location.href = '/index';
             } else {
@@ -91,57 +92,43 @@ document.addEventListener('DOMContentLoaded', async (event) => {
                 checkFromCookies();
             }
         });
-    }
-});
 
-
-// Function to handle user sign-up
-document.addEventListener('DOMContentLoadedTwo', async (event) => {
-    checkFromCookies();
-
-    if (window.location.pathname == '/' || window.location.pathname == '/login') {
-        const email = document.querySelector('input[name="email"]');
+        // Sign-up functionality
+        const newEmail = document.querySelector('input[name="newemail"]');
         const newPassword = document.querySelector('input[name="newPassword"]');
         const confirmPassword = document.querySelector('input[name="confirmPassword"]');
-		const btn = document.querySelector('button[name="signupButton"]');
+        const signupBtn = document.querySelector('button[name="signupButton"]');
 
-        btn.addEventListener('click', async (e) => {
+        signupBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-            const emailValue = email.value;
+            const newEmailValue = newEmail.value;
             const newPasswordValue = newPassword.value;
-			const confirmPasswordValue = confirmPassword.value;
+            const confirmPasswordValue = confirmPassword.value;
 
-			if (newPasswordValue == confirmPasswordValue)
-			{
-				const response = await fetch('/signup', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({ email: emailValue, confirmPassword: confirmPasswordValue }),
-				});
-	
-				const result = await response.json();
-				if (result.success) {
-					// setCookie('logged', 'true', 1);
-					// setCookie('userEmail', emailValue);
-					// checkFromCookies();
-					if (window.location.pathname == '/')
-					{
-						window.location.href = '/';
-					}
-					else if (window.location.pathname == '/login')
-					{
-						window.location.href = '/login';
-					}
-				} else {
-					alert('Sign-up failed.');
-				}
-			}
-			else
-			{
-				alert("Sign up failed");
-			}
+            if (newPasswordValue === confirmPasswordValue) {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: newEmailValue, confirmPassword: confirmPasswordValue }),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    setCookie('logged', 'true', 1);
+                    setCookie('userEmail', newEmailValue);
+                    checkFromCookies();
+                    window.location.href = '/index'; // Redirect after successful sign-up
+                } else {
+                    alert('Sign-up failed.');
+                }
+            } else {
+                alert('Passwords do not match.');
+            }
+        });
+    }
+});
 
             // const response = await fetch('/signup', {
             //     method: 'POST',
@@ -167,6 +154,3 @@ document.addEventListener('DOMContentLoadedTwo', async (event) => {
             // } else {
             //     alert('Sign-up failed.');
             // }
-        });
-    }
-});

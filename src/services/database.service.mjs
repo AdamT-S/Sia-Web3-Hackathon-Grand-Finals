@@ -85,12 +85,14 @@ async rm_tokens(less_tokens, email) {
 		try{
 			const sql = `
 			INSERT INTO userinfo (email, user_pass, tokens, user_type)
-			VALUES ("${email}", "${password}", 0, "endUser")
+			VALUES (?, ?, 0, "endUser")
 			`
-		}
-		catch (err) {
-			console.error('cannot add user:', err);
-			return [];
+			const [result] = await this.conn.execute(sql, [email, password]); // Execute the query
+			console.log("User added successfully");
+			return result; // Return the result of the query execution
+		} catch (err) {
+			console.error('Cannot add user:', err);
+			throw err; // Throw the error to be handled by the calling function
 		}
 	}
 
