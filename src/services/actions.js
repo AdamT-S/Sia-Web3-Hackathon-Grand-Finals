@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
 
 
 // Function to handle user sign-up
-document.addEventListener('DOMContentLoaded', async (event) => {
+document.addEventListener('DOMContentLoadedTwo', async (event) => {
     checkFromCookies();
 
     if (window.location.pathname == '/' || window.location.pathname == '/login') {
@@ -111,30 +111,62 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             const newPasswordValue = newPassword.value;
 			const confirmPasswordValue = confirmPassword.value;
 
-            const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: emailValue, password: passwordValue }),
-            });
+			if (newPasswordValue == confirmPasswordValue)
+			{
+				const response = await fetch('/signup', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ email: emailValue, confirmPassword: confirmPasswordValue }),
+				});
+	
+				const result = await response.json();
+				if (result.success) {
+					// setCookie('logged', 'true', 1);
+					// setCookie('userEmail', emailValue);
+					// checkFromCookies();
+					if (window.location.pathname == '/')
+					{
+						window.location.href = '/';
+					}
+					else if (window.location.pathname == '/login')
+					{
+						window.location.href = '/login';
+					}
+				} else {
+					alert('Sign-up failed.');
+				}
+			}
+			else
+			{
+				alert("Sign up failed");
+			}
 
-            const result = await response.json();
-            if (result.success) {
-                setCookie('logged', 'true', 1);
-                setCookie('userEmail', emailValue);
-                checkFromCookies();
-				if (window.location.pathname == '/')
-				{
-					window.location.href = '/';
-				}
-                else if (window.location.pathname == '/login')
-				{
-					window.location.href = '/login';
-				}
-            } else {
-                alert('Sign-up failed.');
-            }
+            // const response = await fetch('/signup', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({ email: emailValue, newPassword: newPasswordValue, confirmPassword: confirmPasswordValue }),
+            // });
+
+            // const result = await response.json();
+            // if (result.success) {
+            //     setCookie('logged', 'true', 1);
+            //     setCookie('userEmail', emailValue);
+            //     checkFromCookies();
+			// 	if (window.location.pathname == '/')
+			// 	{
+			// 		window.location.href = '/';
+			// 	}
+            //     else if (window.location.pathname == '/login')
+			// 	{
+			// 		window.location.href = '/login';
+			// 	}
+            // } else {
+            //     alert('Sign-up failed.');
+            // }
         });
     }
 });
