@@ -1,7 +1,7 @@
 body {
     margin: 0;
     /* background-color: #e2fadc; */
-    background: white;
+    background: rgb(227, 230, 242);
     background-attachment: fixed;
     font-family: sans-serif;
     align-items: center;
@@ -39,14 +39,14 @@ body {
     right: 0;
     position: fixed;
     width: 100%;
-    background-color: rgb(172, 232, 150);
+    background-color: rgb(52, 172, 139);
 }
 
 .top-bar .wallet-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
-    color: #666666; /* Default icon color */
+    color: #000000; /* Default icon color */
     cursor: pointer;
     margin-left: 150px;
 
@@ -56,7 +56,7 @@ body {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
-    color: #666666; /* Default icon color */
+    color: #000000; /* Default icon color */
     cursor: pointer;
     margin-right: 150px;
 }
@@ -112,14 +112,14 @@ body {
     left: 0;
     position: fixed;
     width: 100%;
-    background-color: rgb(172, 232, 150);
+    background-color: rgb(52, 172, 139);
 }
 
 .bottom-bar .home-icon {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
-    color: #666666; /* Default icon color */
+    color: #000000; /* Default icon color */
     cursor: pointer;
     margin-right: 150px;
 }
@@ -128,7 +128,7 @@ body {
     font-size: 2.5em;
     padding: 10px;
     border-radius: 100%;
-    color: #666666; /* Default icon color */
+    color: #000000; /* Default icon color */
     cursor: pointer;
     margin-left: 150px;
 }
@@ -163,7 +163,7 @@ body {
 }
 
 .home-content {
-    background-color: #aaafb9;
+    background-color: rgb(52, 172, 139);
     width: 450px;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
