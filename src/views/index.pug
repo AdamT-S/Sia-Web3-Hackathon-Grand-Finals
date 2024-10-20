@@ -232,11 +232,11 @@ html(lang="en")
                         <div class="image-container">
                             <div class="balance-text">Votre solde: ${tokenBalance}</div>
                             <p class="voucher5description">Bon Tesco de 5 £ (500 Points)</p>
-                            <img src="Tesco-Logo.png" alt="5 Enviropoints" class="voucher5" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">                       
+                            <img src="Tesco-Logo.png" alt="5 Enviropoints" class="voucher5" onclick="redeemVoucher(500, ${tokenBalance})">                       
                             <p class="voucher15description">Bon d'achat Primark de 15 £ (1500 Points)</p>
-                            <img src="Primark-Logo.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
+                            <img src="Primark-Logo.png" alt="15 Enviropoints" class="voucher15" onclick="redeemVoucher(1500, ${tokenBalance})">
                             <p class="voucher25description">Bon d'achat Fortnite V-Bucks de 25 £ (2500 Points)</p>
-                            <img src="Fortnite-Logo.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Bon acheté! (make function to display this message and deduct points from balance)')">
+                            <img src="Fortnite-Logo.png" alt="25 Enviropoints" class="voucher25" onclick="redeemVoucher(2500, ${tokenBalance})">
                         </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
@@ -261,6 +261,10 @@ html(lang="en")
                       <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                       <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Redeem</button>
                       <button alt="AddToken" class="addTokenButton" onclick="addTokens()">Add Tokens</button>
+                      <div class="balance-display">
+                        <div class="balance-text">Have any issues? Contact us here:</div>
+                        <div class="balance-text">rapscallionion@gmail.com</div>
+                      </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
               })
@@ -283,7 +287,11 @@ html(lang="en")
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Racheter</button>
-                        <button alt="AddToken" class="addTokenButton" onclick="addTokens()">Add Tokens</button>
+                        <button alt="AddToken" class="addTokenButton" onclick="addTokens()">Ajouter des Jetons</button>
+                        <div class="balance-display">
+                            <div class="balance-text">Vous avez des problèmes ? Contactez-nous ici :</div>
+                            <div class="balance-text">rapscallionion@gmail.com</div>
+                        </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
               })
