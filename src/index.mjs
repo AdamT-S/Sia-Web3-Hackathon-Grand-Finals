@@ -95,16 +95,10 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/SignUp', async (req, res) => {
-	console.log('Login route hit'); // Add this line
+	console.log('Signup route hit'); // Add this line
     const { email, password } = req.body;
     const dbService = await DatabaseService.connect();
     const isLoggedIn = await dbService.add_User(email, password);
-
-    if (isLoggedIn) {
-        res.json({ success: true });
-    } else {
-        res.json({ success: false });
-    }
 });
 
 app.get('/api/tokens', async (req, res) => {
