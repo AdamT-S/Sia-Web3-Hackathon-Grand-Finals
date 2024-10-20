@@ -63,7 +63,7 @@ CREATE TABLE `userinfo` (
 INSERT INTO `userinfo` (`email`, `user_pass`, `tokens`, `user_type`) VALUES
 ('beepboop@Adamemail.com', 'SafePassword', 0, 'endUser'),
 ('RosieLovesMeMore@gmail.com', 'AdamsJeal0us', 500000, 'endUser'),
-('SexyUser@email.com', 'Wh0G4ve4d4mC0n7r0l?', 200, 'Admin');
+('User@email.com', 'P1', 2000, 'Admin');
 
 -- --------------------------------------------------------
 
