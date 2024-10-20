@@ -100,6 +100,37 @@ html(lang="en")
         });
       }
 
+      function addTokens() {
+        console.log(`Adding 5000 tokens`);
+        const userEmail = getCookie('userEmail');
+        if (!userEmail) {
+            alert('User email not found.');
+            return;
+        }
+        
+        fetch('/addToBalance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: userEmail,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload(); // Reload page to fetch new token balance
+            } else {
+                alert('Error adding tokens.');
+            }
+        })
+        .catch(err => {
+            console.error('Error adding tokens:', err);
+            alert('Error adding tokens.');
+        });
+      }
+
 
       function fetchPage(pageName,currentLanguage) {
         let content = '';
@@ -229,6 +260,7 @@ html(lang="en")
                       </div>
                       <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                       <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Redeem</button>
+                      <button alt="AddToken" class="addTokenButton" onclick="addTokens()">Add Tokens</button>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
               })
@@ -251,6 +283,7 @@ html(lang="en")
                         </div>
                         <img src="github-qr-code.png" alt="QR Code" class="qr-code">
                         <button alt="REDEEM" class="redeembutton" onclick="changePage('redeem')">Racheter</button>
+                        <button alt="AddToken" class="addTokenButton" onclick="addTokens()">Add Tokens</button>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
               })

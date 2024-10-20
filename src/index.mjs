@@ -145,3 +145,22 @@ app.post('/deductBalance', async (req, res) => {
         res.status(500).json({ error: 'Unable to subtract tokens' });
     }
 });
+
+app.post('/addToBalance', async (req, res) => {
+    try {
+        const email = req.cookies.userEmail;
+        const { amount } = req.body; // Ensure that 'amount' is extracted properly
+        const db = await DatabaseService.connect();
+        
+        const tokens = await db.Add_Dev_tokens(email); // Add tokens
+
+        if (tokens.affectedRows > 0) {
+            res.json({ success: true });
+        } else {
+            res.json({ success: false });
+        }
+    } catch (err) {
+        console.error('Error adding tokens:', err);
+        res.status(500).json({ error: 'Unable to add tokens' });
+    }
+});

@@ -71,8 +71,8 @@ async Add_Dev_tokens(email){
 	try{
 		const sql = `
 		UPDATE userinfo 
-		SET tokens = tokens + 10000
-		WHERE email = "${email}"; 
+		SET tokens = tokens + 5000
+		WHERE email = ?; 
 		`
 		const [result] = await this.conn.execute(sql, [email]); // Pass the parameters properly
         console.log("Tokens added");
@@ -80,7 +80,7 @@ async Add_Dev_tokens(email){
 
 	}
 	catch (err) {
-		console.error('cannot add tokens:', err);
+		console.error('Cannot add tokens:', err);
 		return [];
 	}
 }
