@@ -63,22 +63,23 @@ export default class DatabaseService {
 			return [];
 	}
 }
-	async rm_tokens(email, less_tokens) {
-		try {
-			const sql = `
-			UPDATE userinfo 
-			SET tokens = tokens - ? 
-			WHERE email = ?;
-			`;
-			const [result] = await this.conn.execute(sql, [less_tokens, email]);
-			console.log("Tokens deducted");
-			return result; // You might want to check `result.affectedRows` in the calling function
+async rm_tokens(less_tokens, email) {
+    try {
+        const sql = `
+        UPDATE userinfo 
+        SET tokens = tokens - ?
+        WHERE email = ?;
+        `;
+        const [result] = await this.conn.execute(sql, [less_tokens, email]); // Pass the parameters properly
+        console.log("Tokens deducted");
+        return result;
 
-		} catch (err) {
-			console.error('Cannot remove tokens:', err);
-			throw err; // Or return null, based on your error handling preference
-		}
-	}
+    } catch (err) {
+        console.error('Cannot remove tokens:', err);
+        throw err;
+    }
+
+}
 
 	async add_User(email, password){
 		try{

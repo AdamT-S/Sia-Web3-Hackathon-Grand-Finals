@@ -109,10 +109,11 @@ app.get('/api/tokens', async (req, res) => {
 
 app.post('/deductBalance', async (req, res) => {
     try {
-		const email = req.cookies.userEmail;
-        const deduction  = req.body;
+        const email = req.cookies.userEmail;
+        const { deduction } = req.body; // Ensure that 'deduction' is extracted properly
         const db = await DatabaseService.connect();
-        const tokens = await db.rm_tokens(email, deduction); // Deduct tokens
+        
+        const tokens = await db.rm_tokens(deduction, email); // Deduct tokens
 
         if (tokens.affectedRows > 0) {
             res.json({ success: true });
