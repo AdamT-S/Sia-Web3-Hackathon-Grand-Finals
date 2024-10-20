@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     if (window.location.pathname == '/' || window.location.pathname == '/login') {
         const email = document.querySelector('input[name="email"]');
         const password = document.querySelector('input[name="password"]');
-        const btn = document.querySelector('button[type="submit"]');
+        const btn = document.querySelector('button[name="loginButton"]');
 
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
@@ -89,6 +89,51 @@ document.addEventListener('DOMContentLoaded', async (event) => {
             } else {
                 setCookie('logged', 'false', 1);
                 checkFromCookies();
+            }
+        });
+    }
+});
+
+
+// Function to handle user sign-up
+document.addEventListener('DOMContentLoaded', async (event) => {
+    checkFromCookies();
+
+    if (window.location.pathname == '/' || window.location.pathname == '/login') {
+        const email = document.querySelector('input[name="email"]');
+        const newPassword = document.querySelector('input[name="newPassword"]');
+        const confirmPassword = document.querySelector('input[name="confirmPassword"]');
+		const btn = document.querySelector('button[name="signupButton"]');
+
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const emailValue = email.value;
+            const newPasswordValue = newPassword.value;
+			const confirmPasswordValue = confirmPassword.value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: emailValue, password: passwordValue }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setCookie('logged', 'true', 1);
+                setCookie('userEmail', emailValue);
+                checkFromCookies();
+				if (window.location.pathname == '/')
+				{
+					window.location.href = '/';
+				}
+                else if (window.location.pathname == '/login')
+				{
+					window.location.href = '/login';
+				}
+            } else {
+                alert('Sign-up failed.');
             }
         });
     }
