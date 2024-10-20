@@ -275,6 +275,11 @@ body {
     height: auto;
 }
 
+.home-content .voucher25{
+    max-width: 120px;
+    height: auto;
+}
+
 .voucher5:hover {
     box-shadow: #EBA37F 0px 0px 38px, #EBA37F 0px 0px 38px;
     cursor: pointer;
