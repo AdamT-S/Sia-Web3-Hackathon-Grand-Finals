@@ -63,17 +63,20 @@ export default class DatabaseService {
 			return [];
 	}
 }
-	async rm_tokens(email, less_tokens){
-		try{
+	async rm_tokens(email, less_tokens) {
+		try {
 			const sql = `
 			UPDATE userinfo 
-			SET tokens = tokens - ${less_tokens}
-			WHERE email = "${email}"; 
-			`
-		}
-		catch (err) {
-			console.error('cannot remove tokens:', err);
-			return [];
+			SET tokens = tokens - ? 
+			WHERE email = ?;
+			`;
+			const [result] = await this.conn.execute(sql, [less_tokens, email]);
+			console.log("Tokens deducted");
+			return result; // You might want to check `result.affectedRows` in the calling function
+
+		} catch (err) {
+			console.error('Cannot remove tokens:', err);
+			throw err; // Or return null, based on your error handling preference
 		}
 	}
 

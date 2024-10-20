@@ -64,6 +64,39 @@ html(lang="en")
           fetchPage(pageName,getLanguage());
       }
 
+      function redeemVoucher(deduction) {
+        console.log(`Redeem voucher called with deduction: ${deduction}`);
+        const userEmail = getCookie('userEmail');
+        if (!userEmail) {
+            alert('User email not found.');
+            return;
+        }
+        alert("1");
+        fetch('/deductBalance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: userEmail,
+                deduction: deduction
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Successfully redeemed voucher! ${deduction} points deducted.`);
+                location.reload(); // Reload page to fetch new token balance
+            } else {
+                alert('Error redeeming voucher.');
+            }
+        })
+        .catch(err => {
+            console.error('Error redeeming voucherr:', err);
+            alert('Error redeeming voucherrr.');
+        });
+      }
+
       function fetchPage(pageName,currentLanguage) {
         let content = '';
         if (pageName === 'home' && currentLanguage == "English") {
@@ -110,14 +143,18 @@ html(lang="en")
                         <div class="image-container">
                             <div class="balance-text">Your Balance: ${tokenBalance}</div>
                             <p class="voucher5description">Tesco £5 Voucher (500 Points)</p>
-                            <img src="Tesco-Logo.png" alt="5 Enviropoints" class="voucher5" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">                       
+                            <img src="Tesco-Logo.png" alt="Tesco" class="voucher5" onclick="redeemVoucher(500)">                       
+                            <button class="voucher5" onclick="redeemVoucher(500)">Redeem Tesco £5 Voucher</button>
                             <p class="voucher15description">Primark £15 Voucher (1500 Points)</p>
-                            <img src="Primark-Logo.png" alt="15 Enviropoints" class="voucher15" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
+                            <img src="Primark-Logo.png" alt="Primark" class="voucher15" onclick="redeemVoucher(500)">
                             <p class="voucher25description">Fortnite £25 V-Bucks Voucher (2500 Points)</p>
-                            <img src="Fortnite-Logo.png" alt="25 Enviropoints" class="voucher25" onclick="alert('Voucher Purchased! (make function to display this message and deduct points from balance)')">
+                            <img src="Fortnite-Logo.png" alt="Fortnite" class="voucher25" onclick="alert('Voucher Purchased!')">
                         </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
+
+                  const voucherImage = document.querySelector('.voucher5');
+                  voucherImage.addEventListener('click', () => redeemVoucher(500));
                   })
               .catch(err => {
                   console.error('Error fetching tokens:', err);
@@ -220,3 +257,4 @@ html(lang="en")
           // Add other cases for redeem, myvouchers, wallet, settings, etc.
           document.getElementById('content').innerHTML = content;
       }
+    script(src="actions.js")

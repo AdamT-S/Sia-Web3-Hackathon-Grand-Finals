@@ -107,3 +107,20 @@ app.get('/api/tokens', async (req, res) => {
     }
 });
 
+app.post('/deductBalance', async (req, res) => {
+    try {
+		const email = req.cookies.userEmail;
+        const deduction  = req.body;
+        const db = await DatabaseService.connect();
+        const tokens = await db.rm_tokens(email, deduction); // Deduct tokens
+
+        if (tokens.affectedRows > 0) {
+            res.json({ success: true });
+        } else {
+            res.json({ success: false });
+        }
+    } catch (err) {
+        console.error('Error subtracting tokens:', err);
+        res.status(500).json({ error: 'Unable to subtract tokens' });
+    }
+});
