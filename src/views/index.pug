@@ -146,15 +146,15 @@ html(lang="en")
                             <img src="Tesco-Logo.png" alt="Tesco" class="voucher5" onclick="redeemVoucher(500)">                       
                             <button class="voucher5" onclick="redeemVoucher(500)">Redeem Tesco £5 Voucher</button>
                             <p class="voucher15description">Primark £15 Voucher (1500 Points)</p>
-                            <img src="Primark-Logo.png" alt="Primark" class="voucher15" onclick="redeemVoucher(500)">
+                            <img src="Primark-Logo.png" alt="Primark" class="voucher15" onclick="redeemVoucher(1500)">
                             <p class="voucher25description">Fortnite £25 V-Bucks Voucher (2500 Points)</p>
-                            <img src="Fortnite-Logo.png" alt="Fortnite" class="voucher25" onclick="alert('Voucher Purchased!')">
+                            <img src="Fortnite-Logo.png" alt="Fortnite" class="voucher25" onclick="redeemVoucher(2500)">
                         </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;
 
                   const voucherImage = document.querySelector('.voucher5');
-                  voucherImage.addEventListener('click', () => redeemVoucher(500));
+                  voucherImage.addEventListener('click', () => redeemVoucher());
                   })
               .catch(err => {
                   console.error('Error fetching tokens:', err);
