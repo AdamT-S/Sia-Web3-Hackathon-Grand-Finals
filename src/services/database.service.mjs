@@ -63,6 +63,29 @@ export default class DatabaseService {
 			return [];
 	}
 }
+
+async Add_Dev_tokens(email){
+	try{
+		const sql = `
+		UPDATE userinfo 
+		SET tokens = tokens + 10000
+		WHERE email = "${email}"; 
+		`
+		const [result] = await this.conn.execute(sql, [email]); // Pass the parameters properly
+        console.log("Tokens added");
+        return result;
+
+    } catch (err) {
+        console.error('Cannot remove tokens:', err);
+        throw err;
+    }
+	}
+	catch (err) {
+		console.error('cannot add tokens:', err);
+		return [];
+	}
+
+
 async rm_tokens(less_tokens, email) {
     try {
         const sql = `
