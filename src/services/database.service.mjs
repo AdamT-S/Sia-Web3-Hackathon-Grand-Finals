@@ -50,13 +50,16 @@ export default class DatabaseService {
 	}
 
 	
-	async Add_tokens(email, more_tokens){
+	async Add_tokens(more_tokens, email){
 		try{
 			const sql = `
 			UPDATE userinfo 
-			SET tokens = tokens + ${more_tokens}
-			WHERE email = "${email}"; 
+			SET tokens = tokens + ?
+			WHERE email = ?; 
 			`
+			const [result] = await this.conn.execute(sql, [email, more_tokens]); // Pass the parameters properly
+        console.log("Tokens added");
+        return result;
 		}
 		catch (err) {
 			console.error('cannot add tokens:', err);
@@ -75,15 +78,12 @@ async Add_Dev_tokens(email){
         console.log("Tokens added");
         return result;
 
-    } catch (err) {
-        console.error('Cannot remove tokens:', err);
-        throw err;
-    }
 	}
 	catch (err) {
 		console.error('cannot add tokens:', err);
 		return [];
 	}
+}
 
 
 async rm_tokens(less_tokens, email) {
