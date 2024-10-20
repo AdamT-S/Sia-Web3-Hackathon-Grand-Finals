@@ -71,7 +71,7 @@ html(lang="en")
             alert('User email not found.');
             return;
         }
-        alert("1");
+        
         fetch('/deductBalance', {
             method: 'POST',
             headers: {
@@ -85,7 +85,7 @@ html(lang="en")
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert(`Successfully redeemed voucher! ${deduction} points deducted.`);
+                
                 location.reload(); // Reload page to fetch new token balance
             } else {
                 alert('Error redeeming voucher.');
