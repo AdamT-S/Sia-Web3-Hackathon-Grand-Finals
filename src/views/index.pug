@@ -64,7 +64,11 @@ html(lang="en")
           fetchPage(pageName,getLanguage());
       }
 
-      function redeemVoucher(deduction) {
+       function redeemVoucher(deduction, tokenBalance) {
+        if (tokenBalance < deduction) {
+            alert('You do not have enough tokens to redeem this voucher.');
+            return;
+        }
         console.log(`Redeem voucher called with deduction: ${deduction}`);
         const userEmail = getCookie('userEmail');
         if (!userEmail) {
@@ -91,10 +95,11 @@ html(lang="en")
             }
         })
         .catch(err => {
-            console.error('Error redeeming voucherr:', err);
-            alert('Error redeeming voucherrr.');
+            console.error('Error redeeming voucher:', err);
+            alert('Error redeeming voucher.');
         });
       }
+
 
       function fetchPage(pageName,currentLanguage) {
         let content = '';
@@ -172,11 +177,11 @@ html(lang="en")
                         <div class="image-container">
                             <div class="balance-text">Your Balance: ${tokenBalance}</div>
                             <p class="voucher5description">Tesco £5 Voucher (500 Points)</p>
-                            <img src="Tesco-Logo.png" alt="Tesco" class="voucher5" onclick="redeemVoucher(500)">                       
+                            <img src="Tesco-Logo.png" alt="Tesco" class="voucher5" onclick="redeemVoucher(500, ${tokenBalance})">                       
                             <p class="voucher15description">Primark £15 Voucher (1500 Points)</p>
-                            <img src="Primark-Logo.png" alt="Primark" class="voucher15" onclick="redeemVoucher(1500)">
+                            <img src="Primark-Logo.png" alt="Primark" class="voucher15" onclick="redeemVoucher(1500, ${tokenBalance})">
                             <p class="voucher25description">Fortnite £25 V-Bucks Voucher (2500 Points)</p>
-                            <img src="Fortnite-Logo.png" alt="Fortnite" class="voucher25" onclick="redeemVoucher(2500)">
+                            <img src="Fortnite-Logo.png" alt="Fortnite" class="voucher25" onclick="redeemVoucher(2500, ${tokenBalance})">
                         </div>
                     </div>`;
                   document.getElementById('content').innerHTML = content;                  
