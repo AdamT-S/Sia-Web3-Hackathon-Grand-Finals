@@ -50,8 +50,8 @@ export default class DatabaseService {
 	}
 
 	
-	async Add_tokens(more_tokens, email){
-		try{
+	async Add_tokens(more_tokens, email) {
+		try {
 			const sql = `
 			UPDATE userinfo 
 			SET tokens = tokens + ?
@@ -64,52 +64,51 @@ export default class DatabaseService {
 		catch (err) {
 			console.error('cannot add tokens:', err);
 			return [];
+		}
 	}
-}
 
-async Add_Dev_tokens(email) {
-    try {
-        const sql = `
-        UPDATE userinfo 
-        SET tokens = tokens + 5000
-        WHERE email = ?;
-        `;
+	async Add_Dev_tokens(email) {
+		try {
+			const sql = `
+			UPDATE userinfo 
+			SET tokens = tokens + 5000
+			WHERE email = ?;
+			`;
 
-        // Execute the SQL query with proper parameter binding
-        const [result] = await this.conn.execute(sql, [email]);
+			// Execute the SQL query with proper parameter binding
+			const [result] = await this.conn.execute(sql, [email]);
 
-        // Log the success message
-        console.log("5000 tokens added successfully for email:", email);
-        
-        return result; // Return the result
-    } catch (err) {
-        // Log the error message if any exception occurs
-        console.error('Error while adding dev tokens:', err);
-        throw err; // Re-throw the error to let the caller handle it
-    }
-}
+			// Log the success message
+			console.log("5000 tokens added successfully for email:", email);
+			
+			return result; // Return the result
+		} catch (err) {
+			// Log the error message if any exception occurs
+			console.error('Error while adding dev tokens:', err);
+			throw err; // Re-throw the error to let the caller handle it
+		}
+	}
 
 
-async rm_tokens(less_tokens, email) {
-    try {
-        const sql = `
-        UPDATE userinfo 
-        SET tokens = tokens - ?
-        WHERE email = ?;
-        `;
-        const [result] = await this.conn.execute(sql, [less_tokens, email]); // Pass the parameters properly
-        console.log("Tokens deducted");
-        return result;
+	async rm_tokens(less_tokens, email) {
+		try {
+			const sql = `
+			UPDATE userinfo 
+			SET tokens = tokens - ?
+			WHERE email = ?;
+			`;
+			const [result] = await this.conn.execute(sql, [less_tokens, email]); // Pass the parameters properly
+			console.log("Tokens deducted");
+			return result;
 
-    } catch (err) {
-        console.error('Cannot remove tokens:', err);
-        throw err;
-    }
+		} catch (err) {
+			console.error('Cannot remove tokens:', err);
+			throw err;
+		}
+	}
 
-}
-
-	async add_User(email, password){
-		try{
+	async add_User(email, password) {
+		try {
 			const sql = `
 			INSERT INTO userinfo (email, user_pass, tokens, user_type)
 			VALUES (?, ?, 0, "endUser")
@@ -123,8 +122,8 @@ async rm_tokens(less_tokens, email) {
 		}
 	}
 
-	async add_Admin(email, password){
-		try{
+	async add_Admin(email, password) {
+		try {
 			const sql = `
 			INSERT INTO userinfo (email, user_pass, tokens, user_type)
 			VALUES ("${email}", "${password}", 0, "Admin")
@@ -136,8 +135,8 @@ async rm_tokens(less_tokens, email) {
 		}
 	}
 
-	async del_User(email){
-		try{
+	async del_User(email) {
+		try {
 			const sql = `
 			DELETE
 			FROM userinfo
@@ -150,8 +149,8 @@ async rm_tokens(less_tokens, email) {
 		}
 	}
 
-	async Get_shop(ShopID){
-		try{
+	async Get_shop(ShopID) {
+		try {
 			const sql = `
 			SELECT * 
 			FROM store_info 
@@ -161,21 +160,21 @@ async rm_tokens(less_tokens, email) {
 		catch (err) {
 			console.error('cannot add tokens:', err);
 			return [];
+		}
 	}
-}
 
-async add_Shop(ShopID, Shop_name, voucherID, store_image, store_type){
-	try{
-		const sql = `
-		INSERT INTO store_info (Store_ID, Store_Name, Voucher_ID, store_image, Store_Type)
-VALUES ("${ShopID}", "${Shop_name}", "${voucherID}", "${store_image}", "${store_type}" )
-		`
+	async add_Shop(ShopID, Shop_name, voucherID, store_image, store_type) {
+		try {
+			const sql = `
+			INSERT INTO store_info (Store_ID, Store_Name, Voucher_ID, store_image, Store_Type)
+			VALUES ("${ShopID}", "${Shop_name}", "${voucherID}", "${store_image}", "${store_type}" )
+			`
+		}
+		catch (err) {
+			console.error('cannot add user:', err);
+			return [];
+		}
 	}
-	catch (err) {
-		console.error('cannot add user:', err);
-		return [];
-	}
-}
 
 }
 
