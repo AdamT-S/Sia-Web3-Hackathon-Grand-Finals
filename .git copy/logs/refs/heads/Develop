@@ -1,3 +1,0 @@
-0000000000000000000000000000000000000000 82cafc6d8aa217d0654679703d9fec6acbb59693 Unais Qureshi <unaisq1@gmail.com> 1711313785 +0000	clone: from https://github.com/AdamT-S/Software-Engineering-Coursework.git
-82cafc6d8aa217d0654679703d9fec6acbb59693 ceac6f6e44f645cacf1021d132b56dc22e335fba Unais Qureshi <unaisq1@gmail.com> 1714773418 +0100	pull --tags origin Develop: Fast-forward
-ceac6f6e44f645cacf1021d132b56dc22e335fba 00bb3b55ecb48b4999ff7f720ccc33621d64a5cd Unais Qureshi <unaisq1@gmail.com> 1714776792 +0100	commit: Docker fixed, replaced all files
